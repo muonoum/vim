@@ -7,6 +7,7 @@ let os=trim(system("uname -s"))
 let arch=trim(system("uname -m"))
 let $PATH .= ":bin-" . os . "-" . arch
 let @/=''
+let &showbreak='» '
 let mapleader=','
 
 """
@@ -53,7 +54,30 @@ nmap <silent> <leader>g :vertical Git<cr>
 
 """
 
-let &showbreak='» '
+autocmd BufWritePre * %s/\s\+$//e
+
+"""
+
+set backspace=indent,eol,start
+set breakindent
+set cpoptions+=n$
+set expandtab
+set hlsearch
+set ignorecase smartcase
+set incsearch
+set laststatus=2
+set nolist
+set nowrap
+set scrolloff=1 sidescrolloff=2
+set shortmess=filnxtToOI
+set showcmd
+set smarttab tabstop=4 softtabstop=4 shiftwidth=4
+set splitright splitbelow
+set virtualedit=
+set virtualedit=all
+set wrapscan
+
+"""
 
 command! W w
 command! Q q
@@ -78,24 +102,3 @@ onoremap <cr> <esc>
 inoremap <cr> <esc>`^
 
 xnoremap p pgvy
-
-autocmd BufWritePre * %s/\s\+$//e
-
-set backspace=indent,eol,start
-set breakindent
-set cpoptions+=n$
-set expandtab
-set hlsearch
-set ignorecase smartcase
-set incsearch
-set laststatus=2
-set nolist
-set nowrap
-set scrolloff=1 sidescrolloff=2
-set shortmess=filnxtToOI
-set showcmd
-set smarttab tabstop=4 softtabstop=4 shiftwidth=4
-set splitright splitbelow
-set virtualedit=
-set virtualedit=all
-set wrapscan
