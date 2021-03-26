@@ -1,0 +1,36 @@
+[submodule "pack/plugins/opt/fzf"]
+	path = pack/plugins/opt/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "pack/plugins/opt/fzf.vim"]
+	path = pack/plugins/opt/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "pack/plugins/opt/golden-ratio"]
+	path = pack/plugins/opt/golden-ratio
+	url = https://github.com/roman/golden-ratio.git
+[submodule "pack/plugins/opt/gruvbox"]
+	path = pack/plugins/opt/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "pack/plugins/opt/lightline"]
+	path = pack/plugins/opt/lightline
+	url = https://github.com/itchyny/lightline.vim.git
+[submodule "pack/plugins/opt/undotree"]
+	path = pack/plugins/opt/undotree
+	url = https://github.com/mbbill/undotree.git
+[submodule "pack/plugins/opt/vim-commentary"]
+	path = pack/plugins/opt/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "pack/plugins/opt/vim-fugitive"]
+	path = pack/plugins/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "pack/plugins/opt/vim-surround"]
+	path = pack/plugins/opt/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "pack/plugins/opt/vim-unimpaired"]
+	path = pack/plugins/opt/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "pack/plugins/opt/vim-vinegar"]
+	path = pack/plugins/opt/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule "pack/plugins/opt/vim-repeat"]
+	path = pack/plugins/opt/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
