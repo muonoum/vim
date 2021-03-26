@@ -12,8 +12,8 @@ let mapleader=','
 
 let g:golden_ratio_autocommand = 0
 packadd golden-ratio
-nmap <C-w>- <Plug>(golden_ratio_resize)
-nnoremap <C-w>+ <C-w><Bar><C-w>_
+nmap <silent> <leader>, <Plug>(golden_ratio_resize)
+nmap <silent> <leader>. <C-w><Bar><C-w>_
 if &diff | let g:loaded_golden_ratio=0 | endif
 
 """
