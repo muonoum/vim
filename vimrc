@@ -49,6 +49,18 @@ packadd vim-polyglot
 
 """
 
+packadd undotree
+nmap <silent> <leader>u :UndotreeToggle<cr>
+let g:undotree_CursorLine = 0
+let g:undotree_DiffAutoOpen = 0
+let g:undotree_HelpLine = 0
+let g:undotree_HighlightChangedWithSign = 0
+let g:undotree_ShortIndicators = 1
+let g:undotree_WindowLayout = 3
+
+
+"""
+
 packadd vim-fugitive
 nmap <silent> <leader>g :vertical Git<cr>
 
