@@ -34,3 +34,6 @@
 [submodule "pack/plugins/opt/vim-repeat"]
 	path = pack/plugins/opt/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
+[submodule "pack/plugins/opt/vim-polyglot"]
+	path = pack/plugins/opt/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot

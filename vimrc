@@ -44,6 +44,8 @@ packadd vim-surround
 packadd vim-unimpaired
 packadd vim-vinegar
 
+packadd vim-polyglot
+
 """
 
 packadd vim-fugitive
