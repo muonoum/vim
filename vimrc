@@ -61,7 +61,6 @@ let g:undotree_HighlightChangedWithSign = 0
 let g:undotree_ShortIndicators = 1
 let g:undotree_WindowLayout = 3
 
-
 """
 
 packadd vim-fugitive
