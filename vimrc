@@ -2,6 +2,7 @@ set nocompatible
 syntax on
 filetype plugin indent on
 set t_Co=256
+
 let os=trim(system("uname -s"))
 let arch=trim(system("uname -m"))
 let $PATH .= ":bin-" . os . "-" . arch
