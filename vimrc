@@ -106,6 +106,7 @@ vmap <leader>64 c<c-r>=system('base64 --decode', @")<cr><esc>
 
 nmap <leader>w :set wrap!<cr>
 nmap <leader>o :only<cr>
+nmap <leader>q :bd<cr>
 nmap <space> :nohlsearch<bar>:echo<cr>
 
 nmap <c-j> <c-w>w
