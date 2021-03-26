@@ -38,11 +38,15 @@ highlight VertSplit ctermfg=235 ctermbg=none
 packadd lightline
 
 packadd vim-commentary
-packadd vim-fugitive
 packadd vim-repeat
 packadd vim-surround
 packadd vim-unimpaired
 packadd vim-vinegar
+
+"""
+
+packadd vim-fugitive
+nmap <silent> <leader>g :vertical Git<cr>
 
 """
 
