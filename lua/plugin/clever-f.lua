@@ -1,5 +1,2 @@
-vim.cmd [[
-  map ; <Plug>(clever-f-repeat-forward)
-  map , <Plug>(clever-f-repeat-back)
-]]
-
+vim.api.nvim_set_keymap('', ';', '<Plug>(clever-f-repeat-forward)', {})
+vim.api.nvim_set_keymap('', ',', '<Plug>(clever-f-repeat-back)', {})
