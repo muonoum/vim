@@ -7,6 +7,8 @@ let @/ = ""
 let &showbreak="» "
 let g:mapleader = "\<space>"
 
+"""
+
 lua require 'plugin'
 lua require 'plugin.clever-f'
 lua require 'plugin.fzf'
@@ -17,7 +19,9 @@ lua require 'plugin.vim-go'
 lua require 'plugin.vim-which-key'
 lua require 'leader'
 
-let g:gruvbox_contrast_dark='hard'
+"""
+
+let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 color gruvbox
 highlight Normal ctermbg=black
