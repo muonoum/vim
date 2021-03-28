@@ -34,8 +34,8 @@ highlight StatusLineNC cterm=NONE ctermbg=NONE
 autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType * setlocal formatoptions-=cro
 autocmd FileType * setlocal nocursorline
-autocmd TermOpen * startinsert
-autocmd TermClose * close
+autocmd TermOpen zsh startinsert
+autocmd TermClose zsh close
 
 """
 
