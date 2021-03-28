@@ -53,7 +53,7 @@ set nolist
 set noshowcmd
 set noshowmode
 set noswapfile
-set wrap
+set nowrap
 set ruler
 set scrolloff=1 sidescrolloff=2
 set shortmess=filnxtToOI
