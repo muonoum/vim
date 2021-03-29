@@ -4,23 +4,26 @@ filetype plugin indent on
 set t_Co=256
 let @/ = ""
 
-let &showbreak="» "
 let g:mapleader = "\<space>"
+let g:vimsyn_embed= 'l'
+let &showbreak="» "
 
 """
 
-lua require 'plugin'
-lua require 'plugin.clever-f'
-lua require 'plugin.compe'
-lua require 'plugin.fzf'
-lua require 'plugin.golden-ratio'
-lua require 'plugin.lightline'
-lua require 'plugin.lsp'
-lua require 'plugin.treesitter'
-lua require 'plugin.undo-tree'
-lua require 'plugin.vim-go'
-lua require 'plugin.vim-which-key'
-lua require 'leader'
+lua <<end
+  require 'plugin'
+  require 'plugin.clever-f'
+  require 'plugin.compe'
+  require 'plugin.fzf'
+  require 'plugin.golden-ratio'
+  require 'plugin.lightline'
+  require 'plugin.lsp'
+  require 'plugin.treesitter'
+  require 'plugin.undo-tree'
+  require 'plugin.vim-go'
+  require 'plugin.vim-which-key'
+  require 'leader'
+end
 
 """
 
