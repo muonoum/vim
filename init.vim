@@ -10,14 +10,15 @@ let g:mapleader = "\<space>"
 """
 
 lua require 'plugin'
-lua require 'plugin.clever-f'
-lua require 'plugin.fzf'
-lua require 'plugin.golden-ratio'
 lua require 'plugin.lightline'
-lua require 'plugin.undotree'
-lua require 'plugin.vim-go'
 lua require 'plugin.vim-which-key'
 lua require 'leader'
+
+runtime 'plugin/clever-f.vim'
+runtime 'plugin/fzf.vim'
+runtime 'plugin/golden-ratio.vim'
+runtime 'plugin/undo-tree.vim'
+runtime 'plugin/vim-go.vim'
 
 """
 
