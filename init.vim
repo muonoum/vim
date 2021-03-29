@@ -32,11 +32,14 @@ highlight StatusLineNC cterm=NONE ctermbg=NONE
 
 """
 
-autocmd BufWritePre * %s/\s\+$//e
-autocmd FileType * setlocal formatoptions-=cro
-autocmd FileType * setlocal nocursorline
-autocmd TermOpen zsh startinsert
-autocmd TermClose zsh close
+augroup vimrc
+  autocmd!
+  autocmd BufWritePre * %s/\s\+$//e
+  autocmd FileType * setlocal formatoptions-=cro
+  autocmd FileType * setlocal nocursorline
+  autocmd TermOpen term://* startinsert
+  autocmd TermClose term://* close
+augroup END
 
 """
 
@@ -75,6 +78,7 @@ command! W w
 command! Q q
 command! WQ wq
 command! Wq wq
+
 nmap Q <nop>
 map <S-k> k
 

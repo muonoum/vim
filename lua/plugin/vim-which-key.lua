@@ -37,11 +37,11 @@ local windows_group = {
   o     = 'only',
 }
 
-local process_group = {
-  name = '+process',
-  j    = 'jq',
-  b    = 'base64-decode',
-}
+-- local process_group = {
+--   name = '+process',
+--   j    = 'jq',
+--   b    = 'base64-decode',
+-- }
 
 local which_key_map = {
   ['-'] = 'explore',
@@ -54,7 +54,7 @@ local which_key_map = {
   p     = packages_group,
   t     = toggles_group,
   w     = windows_group,
-  x     = process_group,
+  -- x     = process_group,
 }
 
 which_key_register('<space>', which_key_map)

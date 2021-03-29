@@ -6,7 +6,7 @@ map('n', '<leader>D', ':bd<cr>', {})
 map('n', '<leader>g', ':vertical Git<cr>', {})
 map('n', '<leader>u', ':UndotreeToggle<cr>', {})
 map('n', '<leader>c', ':cd %:p:h<cr>:pwd<cr>', {})
-map('n', '<leader>T', ':vsplit term://$SHELL<cr>', {})
+map('n', '<leader>T', ':vsplit | term <cr>', {})
 
 -- find
 map('n', '<leader>ff', ':Files<cr>', {})
@@ -27,7 +27,7 @@ map('n', '<leader>pi', ':PaqInstall<cr>', {})
 map('n', '<leader>pc', ':PaqClean<cr>', {})
 
 -- process
-map('n', '<leader>xj', '%! jq .<cr>', {})
-map('n', '<leader>xb', [[c<c-r>=system('base64 --decode', @")<cr><esc>]], {})
+-- map('n', '<leader>xj', '%! jq .<cr>', {})
+-- map('v', '<leader>xb', [[c<c-r>=system('base64 --decode', @")<cr><esc>]], {})
 
 
