@@ -30,3 +30,4 @@ map('n', '<leader>pc', ':PaqClean<cr>', {})
 -- git
 map('n', '<leader>gp', ':Git push<cr>', {})
 map('n', '<leader>gg', ':vertical Git<cr>', {})
+map('n', '<leader>gd', ':Gvdiffsplit<cr>', {})

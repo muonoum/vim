@@ -23,6 +23,7 @@ local git_group = {
   name = '+git',
   g    = 'status',
   p    = 'push',
+  d    = 'diff',
 }
 
 local toggles_group = {

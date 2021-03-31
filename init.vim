@@ -16,8 +16,8 @@ lua <<end
   require 'plugin.compe'
   require 'plugin.fzf'
   require 'plugin.golden-ratio'
-  require 'plugin.lightline'
   require 'plugin.lsp'
+  require 'plugin.lualine'
   require 'plugin.treesitter'
   require 'plugin.undo-tree'
   require 'plugin.vim-go'
@@ -30,10 +30,8 @@ end
 let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 color gruvbox
-highlight Normal ctermbg=black
+highlight Normal guibg=NONE ctermbg=black
 highlight VertSplit guifg=#333333 guibg=NONE ctermfg=235 ctermbg=NONE
-highlight StatusLine guifg=NONE guibg=NONE cterm=NONE ctermbg=NONE
-highlight StatusLineNC guifg=NONE guibg=NONE cterm=NONE ctermbg=NONE
 
 """
 
@@ -51,9 +49,9 @@ augroup END
 
 """
 
+set termguicolors
 set backspace=indent,eol,start
 set breakindent
-set cpoptions+=n$
 set expandtab
 set hidden
 set hlsearch
@@ -69,6 +67,7 @@ set nowrap
 set ruler
 set scrolloff=1 sidescrolloff=2
 set shortmess=filnxtToOI
+set shortmess+=c
 set smarttab tabstop=2 softtabstop=2 shiftwidth=2
 set splitright splitbelow
 set textwidth=0 wrapmargin=0
@@ -90,8 +89,6 @@ map <S-k> k
 
 nmap <c-j> <c-w>w
 nmap <c-k> <c-w>W
-
-nnoremap J mzJ`z
 
 nnoremap <cr> <esc>
 vnoremap <cr> <esc>gV
