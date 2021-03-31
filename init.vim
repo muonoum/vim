@@ -32,7 +32,9 @@ let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 color gruvbox
 highlight Normal guibg=NONE ctermbg=black
-highlight VertSplit guifg=#333333 guibg=NONE ctermfg=235 ctermbg=NONE
+highlight VertSplit guibg=#101010 guifg=#101010
+highlight StatusLine guifg=#101010
+highlight StatusLineNC guifg=#101010
 
 """
 
