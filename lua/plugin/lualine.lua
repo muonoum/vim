@@ -4,8 +4,8 @@ local colors = {
   green = '#57ba37',
   blue = '#5f87af',
   dark_blue = '#3e4b59',
-  grey = '#3a3a3a',
-  grey2 = '#1a1a1a',
+  grey = '#444444',
+  grey2 = '#252525',
   grey3 = '#101010',
 
   bg = '#928374',
