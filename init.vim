@@ -29,9 +29,10 @@ end
 """
 
 let g:gruvbox_contrast_dark = 'hard'
-set background=dark
+let g:gruvbox_contrast_light = 'hard'
 color gruvbox
-highlight Normal guibg=NONE ctermbg=black
+set background=dark
+highlight Normal guibg=NONE
 highlight VertSplit guibg=#101010 guifg=#101010
 highlight StatusLine guifg=#101010
 highlight StatusLineNC guifg=#101010

@@ -14,9 +14,9 @@ local colors = {
 }
 
 local normal_colors = {
-  a = { fg = colors.black, bg = colors.bg2, gui = 'bold' },
-  b = { fg = colors.black, bg = colors.bg3 },
-  c = { fg = colors.grey, bg = colors.black },
+  a = { fg = colors.black, bg = colors.bg, gui = 'bold' },
+  b = { fg = colors.grey, bg = colors.black },
+  c = { fg = colors.grey2, bg = colors.black },
 }
 local inactive_colors = {
   a = { fg = colors.blue, bg = colors.grey2, gui = 'bold' },
@@ -52,7 +52,7 @@ require'lualine'.setup{
     lualine_z = {},
   },
   options = {
-    theme = theme,
+    theme = theme, -- 'gruvbox',
     section_separators = '',
     component_separators = '',
     icons_enabled = false,
