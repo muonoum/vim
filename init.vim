@@ -84,6 +84,8 @@ set wrapscan
 
 tnoremap <Esc> <C-\><C-n>
 
+nmap <c-s> :update<cr>
+
 command! W w
 command! Q q
 command! WQ wq
