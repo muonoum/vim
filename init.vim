@@ -22,6 +22,7 @@ lua <<end
   require 'plugin.undo-tree'
   require 'plugin.vim-go'
   require 'plugin.vim-polyglot'
+  require 'plugin.vim-smoothie'
   require 'plugin.vim-which-key'
   require 'leader'
 end

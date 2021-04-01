@@ -10,6 +10,7 @@ paq {
   run = function() vim.cmd 'TSUpdate' end
 }
 
+paq 'psliwka/vim-smoothie'
 paq 'elixir-editors/vim-elixir'
 paq 'fatih/vim-go'
 paq 'hrsh7th/nvim-compe'
