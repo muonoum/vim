@@ -1,39 +1,38 @@
 local colors = {
   black = '#000000',
-  gold = '#f0d50c',
-  green = '#57ba37',
-  blue = '#5f87af',
+  gray1 = '#444444',
+  gray2 = '#252525',
+  gray3 = '#101010',
+  brown = '#928374',
+  blue = '#83a598',
+  red = '#fb4934',
+  yellow = '#d79921',
+  purple = '#b16286',
+  blue2 = '#5f87af',
   dark_blue = '#3e4b59',
-  grey = '#444444',
-  grey2 = '#252525',
-  grey3 = '#101010',
-
-  bg = '#928374',
-  bg2 = '#504945',
-  bg3 = '#3c3836',
 }
 
-local normal_colors = {
-  a = { fg = colors.black, bg = colors.bg, gui = 'bold' },
-  b = { fg = colors.grey, bg = colors.black },
-  c = { fg = colors.grey2, bg = colors.black },
-}
-local inactive_colors = {
-  a = { fg = colors.blue, bg = colors.grey2, gui = 'bold' },
-  b = { fg = colors.dark_blue, bg = colors.grey2, gui = 'bold' },
-  c = { fg = colors.grey, bg = colors.grey3 },
-}
+local function mode_colors(a, b, c)
+ return {
+    a = { fg = colors.black, bg = a, gui = 'bold' },
+    b = { fg = colors.gray1, bg = b or colors.black },
+    c = { fg = colors.gray2, bg = c or colors.black },
+  }
+end
 
 local theme = {
-  normal = normal_colors;
-  inactive = inactive_colors;
-  visual = normal_colors;
-  insert = normal_colors;
-  command = normal_colors;
-  replace = normal_colors;
+  normal = mode_colors(colors.brown),
+  visual = mode_colors(colors.yellow),
+  insert = mode_colors(colors.blue),
+  command = mode_colors(colors.purple),
+  replace = mode_colors(colors.red),
+  -- terminal =
+  inactive = mode_colors(
+    colors.gray3, colors.gray3, colors.gray3
+  ),
 }
 
-require'lualine'.setup{
+require 'lualine'.setup{
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'filename' };
@@ -42,7 +41,7 @@ require'lualine'.setup{
     lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' },
-  };
+  },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
