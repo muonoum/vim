@@ -1,7 +1,7 @@
 syntax on
 filetype plugin indent on
-let @/ = ""
 
+let @/ = ""
 let g:mapleader = "\<space>"
 let g:vimsyn_embed= 'l'
 let &showbreak="» "
