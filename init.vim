@@ -1,7 +1,5 @@
-set nocompatible
 syntax on
 filetype plugin indent on
-set t_Co=256
 let @/ = ""
 
 let g:mapleader = "\<space>"
