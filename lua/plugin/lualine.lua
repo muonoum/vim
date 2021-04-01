@@ -8,8 +8,7 @@ local colors = {
   red = '#fb4934',
   yellow = '#d79921',
   purple = '#b16286',
-  blue2 = '#5f87af',
-  dark_blue = '#3e4b59',
+  aqua = '#8ec07c',
 }
 
 local function mode_colors(a, b, c)
@@ -26,7 +25,7 @@ local theme = {
   insert = mode_colors(colors.blue),
   command = mode_colors(colors.purple),
   replace = mode_colors(colors.red),
-  -- terminal =
+  terminal = mode_colors(colors.aqua),
   inactive = mode_colors(
     colors.gray3, colors.gray3, colors.gray3
   ),
@@ -38,7 +37,7 @@ require 'lualine'.setup{
     lualine_b = { 'filename' };
     lualine_c = { 'branch' },
 
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_x = { 'encoding', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' },
   },

@@ -5,36 +5,33 @@ let @/ = ""
 let g:mapleader = "\<space>"
 let g:vimsyn_embed= 'l'
 let &showbreak="» "
+let &undodir = stdpath('data').'/undo'
 
 """
 
 lua <<end
-  require 'plugin'
-  require 'plugin.clever-f'
-  require 'plugin.compe'
-  require 'plugin.fzf'
-  require 'plugin.golden-ratio'
-  require 'plugin.lsp'
-  require 'plugin.lualine'
-  require 'plugin.treesitter'
-  require 'plugin.undo-tree'
-  require 'plugin.vim-go'
-  require 'plugin.vim-polyglot'
-  require 'plugin.vim-smoothie'
-  require 'plugin.vim-which-key'
-  require 'leader'
+  require 'config.leader'
 end
 
 """
 
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
-color gruvbox
+colorscheme gruvbox
 set background=dark
-highlight Normal guibg=NONE
+
+"""
+
+highlight Normal guibg=none
 highlight VertSplit guibg=#101010 guifg=#101010
-highlight StatusLine guifg=#101010
 highlight StatusLineNC guifg=#101010
+highlight StatusLine guifg=#101010
+
+highlight TelescopeBorder guifg=#555555
+highlight TelescopePromptBorder guifg=#555555
+highlight TelescopeResultsBorder guifg=#555555
+highlight TelescopePreviewBorder guifg=#555555
+highlight TelescopePromptPrefix guifg=#555555
 
 """
 
@@ -48,14 +45,26 @@ augroup vimrc
   autocmd TermClose term://* close
   autocmd FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+  autocmd CursorHold * echo
+  autocmd BufWritePost packer.lua PackerCompile
 augroup END
 
 """
 
-set termguicolors
+" set noequalalways
+" set winminheight=5 winheight=9999 helpheight=9999
+" set winminwidth=10 winwidth=9999
+
+" set statusline=%!v:lua.statusline()
+" set statusline=%!v:lua.build_status_line()
+" highlight StatusLine guifg=#101010 guibg=#888888
+" highlight StatusLineNC guifg=#101010 guibg=#888888
+
+set autoread
 set backspace=indent,eol,start
 set breakindent
 set expandtab
+set formatoptions+=j
 set hidden
 set hlsearch
 set ignorecase smartcase
@@ -69,16 +78,26 @@ set noswapfile
 set nowrap
 set ruler
 set scrolloff=1 sidescrolloff=2
-set shortmess=filnxtToOI
 set shortmess+=c
+set shortmess=filnxtToOI
 set smarttab tabstop=2 softtabstop=2 shiftwidth=2
 set splitright splitbelow
+set termguicolors
 set textwidth=0 wrapmargin=0
 set timeoutlen=500
+set undofile
+set updatetime=2500
 set winwidth=5 winminwidth=5 winheight=1 winminheight=1
 set wrapscan
 
 """
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 tnoremap <Esc> <C-\><C-n>
 

@@ -10,13 +10,18 @@ local find_group = {
   name = '+find',
   f    = 'files',
   b    = 'buffers',
+  g    = 'branches',
+  s    = 'symbols',
+  r    = 'browser',
 }
 
 local packages_group = {
   name = '+packages',
-  i    = 'install',
+  s    = 'sync',
   c    = 'clean',
-  u    = 'update',
+  -- i    = 'install',
+  -- c    = 'clean',
+  -- u    = 'update',
 }
 
 local git_group = {
@@ -29,11 +34,12 @@ local git_group = {
 local toggles_group = {
   name = '+toggles',
   w    = 'wrap',
+  g    = 'golden-ratio'
 }
 
 local windows_group = {
   name  = '+windows',
-  w     = 'zoom',
+  w     = 'golden-ratio',
   ['='] = 'balance',
   f     = 'full',
   o     = 'only',
@@ -42,11 +48,18 @@ local windows_group = {
   d     = 'delete',
 }
 
+-- local source_group = {
+--   name  = '+source',
+--   l     = 'source-lua',
+--   v     = 'source-vim',
+-- }
+
 local which_key_map = {
   ['-'] = 'explore',
   u     = 'undo-tree',
   c     = 'cd',
   T     = 'terminal',
+  ['%'] = 'source',
   f     = find_group,
   p     = packages_group,
   g     = git_group,
