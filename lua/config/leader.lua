@@ -5,7 +5,6 @@ local nmap = function(k, x)
 end
 
 -- top
-nmap('<space>', '<Plug>(golden_ratio_resize)')
 nmap('-', ':Vexplore!<cr>')
 nmap('u', ':UndotreeToggle<cr>')
 nmap('c', ':cd %:p:h<cr>:pwd<cr>') -- TODO git cd || cd

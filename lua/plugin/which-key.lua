@@ -48,18 +48,12 @@ local windows_group = {
   d     = 'delete',
 }
 
--- local source_group = {
---   name  = '+source',
---   l     = 'source-lua',
---   v     = 'source-vim',
--- }
-
 local which_key_map = {
   ['-'] = 'explore',
   u     = 'undo-tree',
   c     = 'cd',
   T     = 'terminal',
-  ['%'] = 'source',
+  ['%'] = 'source-file',
   f     = find_group,
   p     = packages_group,
   g     = git_group,
