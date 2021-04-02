@@ -7,7 +7,7 @@ end
 -- top
 nmap('-', ':Vexplore!<cr>')
 nmap('u', ':UndotreeToggle<cr>')
-nmap('c', ':cd %:p:h<cr>:pwd<cr>') -- TODO git cd || cd
+nmap('c', ':lcd %:p:h<cr>:pwd<cr>') -- TODO Glcd || lcd
 nmap('T', ':vsplit | term <cr>')
 nmap('%', ":lua require'config.util'.source_current_file()<cr>")
 
