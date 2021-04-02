@@ -12,7 +12,7 @@ nmap('T', ':vsplit | term <cr>')
 nmap('%', ":lua require'config.util'.source_current_file()<cr>")
 
 -- find
-nmap('ff', ':Telescope find_files<cr>')
+nmap('ff', ':call v:lua.git_files_or_find_files()<cr>')
 nmap('fb', ':Telescope buffers<cr>')
 nmap('fg', ':Telescope git_branches<cr>')
 nmap('fs', ':Telescope lsp_document_symbols<cr>')
