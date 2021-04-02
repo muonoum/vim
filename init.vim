@@ -1,11 +1,13 @@
-syntax on
-filetype plugin indent on
-
-let @/ = ""
 let g:mapleader = "\<space>"
 let g:vimsyn_embed= 'l'
 let &showbreak="» "
 let &undodir = stdpath('data').'/undo'
+let @/ = ""
+
+"""
+
+syntax on
+filetype plugin indent on
 
 """
 
@@ -27,12 +29,6 @@ highlight VertSplit guibg=#101010 guifg=#101010
 highlight StatusLineNC guifg=#101010
 highlight StatusLine guifg=#101010
 
-highlight TelescopeBorder guifg=#555555
-highlight TelescopePromptBorder guifg=#555555
-highlight TelescopeResultsBorder guifg=#555555
-highlight TelescopePreviewBorder guifg=#555555
-highlight TelescopePromptPrefix guifg=#555555
-
 """
 
 augroup vimrc
@@ -42,71 +38,53 @@ augroup vimrc
   autocmd FileType * setlocal formatoptions-=cro
   autocmd FileType * setlocal nocursorline
   autocmd TermOpen term://* startinsert
-  autocmd TermClose term://* close
+  autocmd TermClose term://* Sayonara
   autocmd FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
   autocmd CursorHold * echo
-  autocmd BufWritePost packer.lua PackerCompile
 augroup END
 
 """
 
-" set noequalalways
-" set winminheight=5 winheight=9999 helpheight=9999
-" set winminwidth=10 winwidth=9999
-
-" set statusline=%!v:lua.statusline()
-" set statusline=%!v:lua.build_status_line()
-" highlight StatusLine guifg=#101010 guibg=#888888
-" highlight StatusLineNC guifg=#101010 guibg=#888888
-
+set mouse=a
 set autoread
 set backspace=indent,eol,start
-set breakindent
-set expandtab
+set expandtab smarttab tabstop=2 softtabstop=2 shiftwidth=2
 set formatoptions+=j
 set hidden
-set hlsearch
-set ignorecase smartcase
-set incsearch
-set laststatus=2
+set incsearch ignorecase smartcase hlsearch wrapscan
 set lazyredraw
 set nolist
-set noshowcmd
-set noshowmode
-set noswapfile
-set nowrap
-set ruler
+set nowrap linebreak breakindent
+set ruler noshowcmd noshowmode laststatus=2
 set scrolloff=1 sidescrolloff=2
-set shortmess+=c
-set shortmess=filnxtToOI
-set smarttab tabstop=2 softtabstop=2 shiftwidth=2
+set shortmess=filnxtToOIc
 set splitright splitbelow
 set termguicolors
 set textwidth=0 wrapmargin=0
-set timeoutlen=500
-set undofile
-set updatetime=2500
+set undofile noswapfile
+set updatetime=2500 timeoutlen=500
 set winwidth=5 winminwidth=5 winheight=1 winminheight=1
-set wrapscan
 
 """
 
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
-
-tnoremap <Esc> <C-\><C-n>
-
-nmap <c-s> :update<cr>
+command! PackerInstall packadd packer.nvim | lua require('plugin.packer').install()
+command! PackerUpdate packadd packer.nvim | lua require('plugin.packer').update()
+command! PackerSync packadd packer.nvim | lua require('plugin.packer').sync()
+command! PackerClean packadd packer.nvim | lua require('plugin.packer').clean()
+command! PackerCompile packadd packer.nvim | lua require('plugin.packer').compile()
 
 command! W w
 command! Q q
 command! WQ wq
 command! Wq wq
+
+nnoremap bn :bnext<cr>
+nnoremap bN :bprevious<cr>
+
+tnoremap <Esc> <C-\><C-n>
+
+nmap <c-s> :update<cr>
 
 nmap Q <nop>
 map <S-k> k
@@ -120,6 +98,7 @@ onoremap <cr> <esc>
 inoremap <cr> <esc>`^
 
 xnoremap p pgvy
+xnoremap P Pgvy
 
 " nmap <leader>j %! jq .<cr>
 " vmap <leader>64 c<c-r>=system('base64 --decode', @")<cr><esc>

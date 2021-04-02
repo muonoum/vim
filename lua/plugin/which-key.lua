@@ -13,15 +13,14 @@ local find_group = {
   g    = 'branches',
   s    = 'symbols',
   r    = 'browser',
+  w    = 'words',
+  p    = 'grep',
 }
 
 local packages_group = {
   name = '+packages',
   s    = 'sync',
   c    = 'clean',
-  -- i    = 'install',
-  -- c    = 'clean',
-  -- u    = 'update',
 }
 
 local git_group = {
@@ -53,12 +52,25 @@ local which_key_map = {
   u     = 'undo-tree',
   c     = 'cd',
   T     = 'terminal',
+  R     = 'terminal',
+  q     = 'close',
+  Q     = 'which_key_ignore',
   ['%'] = 'source-file',
   f     = find_group,
   p     = packages_group,
   g     = git_group,
   t     = toggles_group,
   w     = windows_group,
+  ['1'] = 'which_key_ignore',
+  ['2'] = 'which_key_ignore',
+  ['3'] = 'which_key_ignore',
+  ['4'] = 'which_key_ignore',
+  ['5'] = 'which_key_ignore',
+  ['6'] = 'which_key_ignore',
+  ['7'] = 'which_key_ignore',
+  ['8'] = 'which_key_ignore',
+  ['9'] = 'which_key_ignore',
+  ['0'] = 'which_key_ignore',
 }
 
 which_key_register('<space>', which_key_map)
