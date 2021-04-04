@@ -62,7 +62,8 @@ local which_key_map = {
 
   ['%'] = 'source',
   ['-'] = 'explore',
-  q     = 'close',
+  q     = 'sayonara',
+  k     = 'close',
   cd    = 'cd',
   T     = 'terminal',
 
@@ -76,6 +77,28 @@ local which_key_map = {
   ['8'] = 'which_key_ignore',
   ['9'] = 'which_key_ignore',
   ['0'] = 'which_key_ignore',
+
+  ['k1'] = 'which_key_ignore',
+  ['k2'] = 'which_key_ignore',
+  ['k3'] = 'which_key_ignore',
+  ['k4'] = 'which_key_ignore',
+  ['k5'] = 'which_key_ignore',
+  ['k6'] = 'which_key_ignore',
+  ['k7'] = 'which_key_ignore',
+  ['k8'] = 'which_key_ignore',
+  ['k9'] = 'which_key_ignore',
+  ['k0'] = 'which_key_ignore',
+
+  ['v1'] = 'which_key_ignore',
+  ['v2'] = 'which_key_ignore',
+  ['v3'] = 'which_key_ignore',
+  ['v4'] = 'which_key_ignore',
+  ['v5'] = 'which_key_ignore',
+  ['v6'] = 'which_key_ignore',
+  ['v7'] = 'which_key_ignore',
+  ['v8'] = 'which_key_ignore',
+  ['v9'] = 'which_key_ignore',
+  ['v0'] = 'which_key_ignore',
 }
 
 which_key_register('<space>', which_key_map)

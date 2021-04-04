@@ -2,6 +2,7 @@ local util = require('junkbox.util')
 
 -- +top
 util.lnmap('%',  [[:lua require'junkbox.util'.source()<cr>]])
+util.lnmap('k',  [[:close<cr>]])
 util.lnmap('q',  [[:Sayonara<cr>]], {silent = true})
 util.lnmap('cd', [[:lcd %:p:h<cr>:pwd<cr>]])
 util.lnmap('-',  [[:vsplit $PWD<cr>]])
