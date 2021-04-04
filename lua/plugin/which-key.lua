@@ -67,6 +67,8 @@ local which_key_map = {
 
   ['<space>'] = 'which_key_ignore',
   ['<BS>'] = 'which_key_ignore',
+  ['j'] = 'which_key_ignore',
+  ['64'] = 'which_key_ignore',
 
   ['1'] = 'which_key_ignore',
   ['2'] = 'which_key_ignore',

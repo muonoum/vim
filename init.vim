@@ -95,6 +95,3 @@ inoremap <cr> <esc>`^
 
 xnoremap p pgvy
 xnoremap P Pgvy
-
-" nmap <leader>j %! jq .<cr>
-" vmap <leader>64 c<c-r>=system('base64 --decode', @")<cr><esc>

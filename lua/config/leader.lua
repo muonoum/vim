@@ -3,6 +3,9 @@ local util = require('junkbox.util')
 util.lnmap('<space>', [[:bnext<cr>]])
 util.lnmap('<bs>',    [[:bprevious<cr>]])
 
+util.lnmap('j',  [[%! jq .<cr>]])
+util.lvmap('64', [[c<c-r>=system('base64 --decode', @")<cr><esc>]])
+
 -- +top
 util.lnmap('%',  [[:lua require'junkbox.util'.source()<cr>]])
 util.lnmap('k',  [[:close<cr>]])

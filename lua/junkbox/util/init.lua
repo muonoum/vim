@@ -18,12 +18,21 @@ local function source()
   print("sourced " .. current_file)
 end
 
+local function lmap(mode, key, action, opts)
+  vim.api.nvim_set_keymap(mode, '<leader>' .. key, action, opts or {})
+end
+
+local function lvmap(key, action, opts)
+  lmap('v', key, action, opts)
+end
+
 local function lnmap(key, action, opts)
-  vim.api.nvim_set_keymap('n', '<leader>' .. key, action, opts or {})
+  lmap('n', key, action, opts)
 end
 
 return {
   exec = exec,
   source = source,
   lnmap = lnmap,
+  lvmap = lvmap,
 }
