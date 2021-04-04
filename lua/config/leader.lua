@@ -1,7 +1,7 @@
 local util = require('junkbox.util')
 
 util.lnmap('<space>', [[:bnext<cr>]])
-util.lnmap('<bs>', [[:bprevious<cr>]])
+util.lnmap('<bs>',    [[:bprevious<cr>]])
 
 -- +top
 util.lnmap('%',  [[:lua require'junkbox.util'.source()<cr>]])
