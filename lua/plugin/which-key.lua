@@ -42,8 +42,6 @@ local windows_group = {
   f     = 'full',
   o     = 'only',
   r     = 'rotate',
-  W     = 'wipe',
-  d     = 'delete',
 }
 
 local git_group = {
@@ -64,7 +62,7 @@ local which_key_map = {
   ['-'] = 'explore',
   q     = 'sayonara',
   k     = 'close',
-  cd    = 'cd',
+  c     = 'cd',
   T     = 'terminal',
 
   ['1'] = 'which_key_ignore',

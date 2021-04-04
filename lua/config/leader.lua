@@ -1,10 +1,12 @@
 local util = require('junkbox.util')
 
 -- +top
+util.lnmap('<space>', [[:<c-u>exec (v:count ? 'b '.v:count : 'bn')<cr>]])
+
 util.lnmap('%',  [[:lua require'junkbox.util'.source()<cr>]])
 util.lnmap('k',  [[:close<cr>]])
 util.lnmap('q',  [[:Sayonara<cr>]], {silent = true})
-util.lnmap('cd', [[:lcd %:p:h<cr>:pwd<cr>]])
+util.lnmap('c',  [[:lcd %:p:h<cr>:pwd<cr>]])
 util.lnmap('-',  [[:vsplit $PWD<cr>]])
 util.lnmap('T',  [[:vsplit | term<cr>]])
 
@@ -30,8 +32,6 @@ util.lnmap('wf', [[<C-w><Bar><C-w>_]])
 util.lnmap('w=', [[<C-w>=]])
 util.lnmap('wo', [[:only<cr>]])
 util.lnmap('wr', [[<C-w>r]])
-util.lnmap('wd', [[:bd<cr>]])
-util.lnmap('wW', [[:%bd!<cr>]])
 
 -- +git
 util.lnmap('gp', [[:Git push<cr>]])
