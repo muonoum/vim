@@ -1,12 +1,12 @@
 local util = require('junkbox.util')
 local which_key_register = vim.fn['which_key#register']
 
-vim.api.nvim_exec([[
+util.exec [[
   augroup which_key
     autocmd!
     autocmd FileType which_key set laststatus=0 noshowmode noruler | autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
   augroup END
-]], false)
+]]
 
 vim.g.which_key_use_floating_win = 0
 vim.g.which_key_timeout = 250

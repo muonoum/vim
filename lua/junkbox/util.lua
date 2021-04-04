@@ -17,6 +17,10 @@ mod.otherbufdo = function(what)
   end
 end
 
+mod.exec = function(cmd)
+  vim.api.nvim_exec(cmd, false)
+end
+
 mod.source = function()
   local current_file = vim.fn.expand('%')
 
