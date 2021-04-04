@@ -1,27 +1,12 @@
-local mod = {}
-
 local function ends_with(str, pattern)
   return str:sub(-string.len(pattern)) == pattern
 end
 
-mod.otherbufdo = function(what)
-  local bufs = vim.api.nvim_list_bufs()
-  local active = vim.fn.winbufnr(vim.fn.winnr())
-
-  for i=1,#bufs do
-    if bufs[i] ~= active then
-      local cmd = string.format('%dbufdo %s', bufs[i], what)
-      print(cmd)
-      vim.cmd(cmd)
-    end
-  end
-end
-
-mod.exec = function(cmd)
+local function exec(cmd)
   vim.api.nvim_exec(cmd, false)
 end
 
-mod.source = function()
+local function source()
   local current_file = vim.fn.expand('%')
 
   if ends_with(current_file, ".lua") then
@@ -33,8 +18,12 @@ mod.source = function()
   print("sourced " .. current_file)
 end
 
-mod.lnmap = function(key, action, opts)
+local function lnmap(key, action, opts)
   vim.api.nvim_set_keymap('n', '<leader>' .. key, action, opts or {})
 end
 
-return mod
+return {
+  exec = exec,
+  source = source,
+  lnmap = lnmap,
+}
