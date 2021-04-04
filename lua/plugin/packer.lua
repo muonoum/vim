@@ -53,7 +53,12 @@ return require('packer').startup(
       config = function() require('plugin.lspconfig') end,
     }
 
+    use { 'morhetz/gruvbox',
+      disable = false,
+    }
+
     use { 'npxbr/gruvbox.nvim',
+      disable = true,
       requires = { 'rktjmp/lush.nvim' },
     }
 

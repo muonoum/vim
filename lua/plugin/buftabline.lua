@@ -1,8 +1,8 @@
 local util = require('junkbox.util')
 
-vim.cmd [[highlight TabLineFill guifg=#000000  guibg=#444444]]
-vim.cmd [[highlight TabLine guifg=#222222 guibg=#666666]]
-vim.cmd [[highlight TabLineSel guibg=#928374 guifg=#000000 gui=bold]]
+vim.cmd [[highlight TabLineFill guifg=#444444 guibg=#000000 gui=none]]
+vim.cmd [[highlight TabLine guifg=#666666 guibg=#222222 gui=none]]
+vim.cmd [[highlight TabLineSel guifg=#000000 guibg=#928374 gui=bold]]
 
 util.lnmap('1', [[:lua require('buftabline').go_to_buffer(1)<cr>]])
 util.lnmap('2', [[:lua require('buftabline').go_to_buffer(2)<cr>]])
