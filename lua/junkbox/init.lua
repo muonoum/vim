@@ -5,13 +5,6 @@ local actions = require('telescope.actions')
 
 local mod = {}
 
--- start in normal
--- 'j/k' navigate
--- '-' dir up
--- preview 'ls -1' like
--- change cwd
--- sort dirs,files then by score
-
 mod.file_browser = function()
   builtin.file_browser({
     defaults = {
