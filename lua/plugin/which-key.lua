@@ -62,9 +62,9 @@ local which_key_map = {
 
   ['%'] = 'source',
   ['-'] = 'explore',
-  q = 'close',
-  cd = 'cd',
-  T = 'terminal',
+  q     = 'close',
+  cd    = 'cd',
+  T     = 'terminal',
 
   ['1'] = 'which_key_ignore',
   ['2'] = 'which_key_ignore',
