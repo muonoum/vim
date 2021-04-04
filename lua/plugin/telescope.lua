@@ -4,11 +4,6 @@ local actions = require('telescope.actions')
 
 telescope.setup {
   defaults = {
-    mappings = {
-      i = {
-        ["<esc>"] = actions.close,
-      },
-    },
     preview_cutoff = 80,
     prompt_prefix = '  ',
     selection_caret = '  ',

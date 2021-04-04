@@ -1,45 +1,44 @@
+local util = require('junkbox.util')
 local which_key_register = vim.fn['which_key#register']
-local map = vim.api.nvim_set_keymap
+
+vim.api.nvim_exec([[
+  augroup which_key
+    autocmd!
+    autocmd FileType which_key set laststatus=0 noshowmode noruler | autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+  augroup END
+]], false)
 
 vim.g.which_key_use_floating_win = 0
 vim.g.which_key_timeout = 250
 
-map('n', '<leader>', ":WhichKey '<space>'<cr>", { noremap = true })
-
-local find_group = {
-  name = '+find',
-  f    = 'files',
-  b    = 'buffers',
-  g    = 'branches',
-  s    = 'symbols',
-  r    = 'browser',
-  w    = 'words',
-  p    = 'grep',
-}
-
-local packages_group = {
-  name = '+packages',
-  s    = 'sync',
-  c    = 'clean',
-}
-
-local git_group = {
-  name = '+git',
-  g    = 'status',
-  p    = 'push',
-  d    = 'diff',
-}
+util.lnmap('', [[:WhichKey '<space>'<cr>]])
 
 local toggles_group = {
   name = '+toggles',
+  g    = 'golden-ratio',
   w    = 'wrap',
-  g    = 'golden-ratio'
+}
+
+local files_group = {
+  name  = '+files',
+  f     = 'find',
+}
+
+local buffers_group = {
+  name  = '+buffers',
+  f     = 'find',
+  l     = 'ls',
+  s     = 'split',
+  v     = 'vsplit',
+  a     = 'all',
+  D     = 'delete-all',
+  W     = 'wipe-all',
 }
 
 local windows_group = {
   name  = '+windows',
   w     = 'golden-ratio',
-  ['='] = 'balance',
+  ['='] = 'equal',
   f     = 'full',
   o     = 'only',
   r     = 'rotate',
@@ -47,20 +46,26 @@ local windows_group = {
   d     = 'delete',
 }
 
+local git_group = {
+  name  = '+git',
+  g     = 'status',
+  p     = 'push',
+  d     = 'diff',
+}
+
 local which_key_map = {
-  ['-'] = 'explore',
-  u     = 'undo-tree',
-  c     = 'cd',
-  T     = 'terminal',
-  R     = 'terminal',
-  q     = 'close',
-  Q     = 'which_key_ignore',
-  ['%'] = 'source-file',
-  f     = find_group,
-  p     = packages_group,
-  g     = git_group,
   t     = toggles_group,
+  f     = files_group,
+  b     = buffers_group,
   w     = windows_group,
+  g     = git_group,
+
+  ['%'] = 'source',
+  ['-'] = 'explore',
+  q = 'close',
+  cd = 'cd',
+  T = 'terminal',
+
   ['1'] = 'which_key_ignore',
   ['2'] = 'which_key_ignore',
   ['3'] = 'which_key_ignore',
