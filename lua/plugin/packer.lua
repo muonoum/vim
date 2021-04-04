@@ -13,15 +13,9 @@ return require('packer').startup(function()
     },
   }
 
-  use {
-    'mhinz/vim-sayonara',
-    cmd = 'Sayonara'
-  }
+  use { 'mhinz/vim-sayonara', cmd = 'Sayonara' }
 
-  use {
-    'dstein64/vim-startuptime',
-    cmd = { 'StartupTime' },
-  }
+  use { 'dstein64/vim-startuptime', cmd = 'StartupTime' }
 
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -91,18 +85,21 @@ return require('packer').startup(function()
   }
 
   use {
-    'ap/vim-buftabline',
-    disable = false,
-    config = function() require('plugin.buftabline') end,
-  }
-
-  use {
-    -- 'ap/vim-readdir',
-    'spektroskop/vim-readdir',
-    disable = false,
+    'spektroskop/buftabline.nvim',
+    branch = 'highlight-hidden',
     config = function()
-      vim.g.loaded_netrwPlugin = 1
-      vim.cmd [[highlight Directory guifg=#83a598]]
-    end
+      vim.cmd [[highlight TabLineFill guifg=#000000  guibg=#444444]]
+      vim.cmd [[highlight TabLine guifg=#222222 guibg=#666666]]
+      vim.cmd [[highlight TabLineSel guibg=#928374 guifg=#000000 gui=bold]]
+
+      require("buftabline").setup{
+        go_to_maps = true,
+        kill_maps = true,
+        highlight_hidden = true,
+        hlgroup_current = 'TabLineSel',
+        hlgroup_normal = 'TabLine',
+        hlgroup_hidden = 'TabLineFill',
+      }
+    end,
   }
 end)
