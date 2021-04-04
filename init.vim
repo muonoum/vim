@@ -73,10 +73,10 @@ command! Q q
 command! WQ wq
 command! Wq wq
 
-nnoremap gb :<c-u>exec (v:count ? 'b '.v:count : 'bn')<cr>
-nnoremap gB :<c-u>exec (v:count ? 'b '.v:count : 'bp')<cr>
-nnoremap gl :ls<cr>:b<space>
-nnoremap gv :ls<cr>:vertical sb<space>
+" nnoremap gb :<c-u>exec (v:count ? 'b '.v:count : 'bn')<cr>
+" nnoremap gB :<c-u>exec (v:count ? 'b '.v:count : 'bp')<cr>
+" nnoremap gl :ls<cr>:b<space>
+" nnoremap gv :ls<cr>:vertical sb<space>
 
 tnoremap <Esc> <C-\><C-n>
 
