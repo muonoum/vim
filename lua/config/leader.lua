@@ -1,8 +1,9 @@
 local util = require('junkbox.util')
 
--- +top
-util.lnmap('<space>', [[:<c-u>exec (v:count ? 'b '.v:count : 'bn')<cr>]])
+util.lnmap('<space>', [[:bnext<cr>]])
+util.lnmap('<bs>', [[:bprevious<cr>]])
 
+-- +top
 util.lnmap('%',  [[:lua require'junkbox.util'.source()<cr>]])
 util.lnmap('k',  [[:close<cr>]])
 util.lnmap('q',  [[:Sayonara<cr>]], {silent = true})

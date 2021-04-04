@@ -65,6 +65,9 @@ local which_key_map = {
   c     = 'cd',
   T     = 'terminal',
 
+  ['<space>'] = 'which_key_ignore',
+  ['<BS>'] = 'which_key_ignore',
+
   ['1'] = 'which_key_ignore',
   ['2'] = 'which_key_ignore',
   ['3'] = 'which_key_ignore',
