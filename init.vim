@@ -39,8 +39,6 @@ augroup vimrc
   autocmd FileType * setlocal nocursorline
   autocmd TermOpen term://* startinsert
   autocmd TermClose term://* Sayonara
-  autocmd FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
   autocmd CursorHold * echo
 augroup END
 
@@ -68,11 +66,7 @@ set winwidth=5 winminwidth=5 winheight=1 winminheight=1
 
 """
 
-command! PackerInstall packadd packer.nvim | lua require('plugin.packer').install()
-command! PackerUpdate packadd packer.nvim | lua require('plugin.packer').update()
-command! PackerSync packadd packer.nvim | lua require('plugin.packer').sync()
-command! PackerClean packadd packer.nvim | lua require('plugin.packer').clean()
-command! PackerCompile packadd packer.nvim | lua require('plugin.packer').compile()
+map - :lua require'junkbox'.file_browser()<cr>
 
 command! W w
 command! Q q
