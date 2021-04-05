@@ -85,7 +85,7 @@ return require('packer').startup(
     }
 
     use { 'rafcamlet/nvim-luapad',
-      opt = true,
+      cmd = { 'Luapad' }
     }
 
     use { 'tpope/vim-commentary' }
