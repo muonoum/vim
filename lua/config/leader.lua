@@ -1,45 +1,46 @@
-local util = require('junkbox.util')
+local key = require('junkbox.key')
 
-util.lnmap('<space>', [[:bnext<cr>]])
-util.lnmap('<bs>',    [[:bprevious<cr>]])
+key.lnmap('<space>', [[:bnext<cr>]])
+key.lnmap('<bs>', [[:bprevious<cr>]])
 
-util.lnmap('j',  [[%! jq .<cr>]])
-util.lvmap('64', [[c<c-r>=system('base64 --decode', @")<cr><esc>]])
+key.lnmap('j',  [[%! jq .<cr>]])
+key.lvmap('64', [[c<c-r>=system('base64 --decode', @")<cr><esc>]])
 
 -- +top
-util.lnmap('%',  [[:lua require'junkbox.util'.source()<cr>]])
-util.lnmap('k',  [[:close<cr>]])
-util.lnmap('q',  [[:Sayonara<cr>]], {silent = true})
-util.lnmap('c',  [[:lcd %:p:h<cr>:pwd<cr>]])
-util.lnmap('-',  [[:vsplit $PWD<cr>]])
-util.lnmap('T',  [[:vsplit | term<cr>]])
+key.lnmap('%',  [[:lua require'junkbox.util'.source()<cr>]], { silent = true })
+key.lnmap('k',  [[:close<cr>]])
+key.lnmap('q',  [[:Sayonara<cr>]], {silent = true})
+key.lnmap('c',  [[:lcd %:p:h<cr>:pwd<cr>]])
+key.lnmap('-',  [[:vsplit $PWD<cr>]])
+key.lnmap('T',  [[:vsplit | term<cr>]])
 
 -- +toggles
-util.lnmap('tw', [[:set wrap!<cr>]])
-util.lnmap('tg', [[:GoldenRatioToggle<cr>]])
+key.lnmap('tw', [[:set wrap!<cr>]])
+key.lnmap('tg', [[:GoldenRatioToggle<cr>]])
 
 -- +files
-util.lnmap('ff', [[:Telescope find_files<cr>]])
+key.lnmap('ff', [[:Telescope find_files<cr>]])
 
 -- +buffers
-util.lnmap('bf', [[:Telescope buffers<cr>]])
-util.lnmap('bl', [[:ls<cr>:b<space>]])
-util.lnmap('bs', [[:ls<cr>:sb<space>]])
-util.lnmap('bv', [[:ls<cr>:vertical sb<space>]])
-util.lnmap('ba', [[:vertical ball<cr>]])
-util.lnmap('bD', [[:OtherBufDo bdelete!<cr>]])
-util.lnmap('bW', [[:OtherBufDo bwipeout!<cr>]])
--- util.lnmap('bD', [[:%bdelete!<cr>]])
--- util.lnmap('bW', [[:%bwipeout!<cr>]])
+key.lnmap('bf', [[:Telescope buffers<cr>]])
+key.lnmap('bl', [[:ls<cr>:b<space>]])
+key.lnmap('bs', [[:ls<cr>:sb<space>]])
+key.lnmap('bv', [[:ls<cr>:vertical sb<space>]])
+key.lnmap('ba', [[:vertical ball<cr>]])
+
+-- +wipe
+key.lnmap('bwo', [[:OtherBufDo bwipeout!<cr>]])
+key.lnmap('bwh', [[:HiddenBufDo bwipeout!<cr>]])
+key.lnmap('bwa', [[:%bwipeout!<cr>]])
 
 -- +windows
-util.lnmap('ww', [[<Plug>(golden_ratio_resize)]])
-util.lnmap('wf', [[<C-w><Bar><C-w>_]])
-util.lnmap('w=', [[<C-w>=]])
-util.lnmap('wo', [[:only<cr>]])
-util.lnmap('wr', [[<C-w>r]])
+key.lnmap('ww', [[<Plug>(golden_ratio_resize)]])
+key.lnmap('wf', [[<C-w><Bar><C-w>_]])
+key.lnmap('w=', [[<C-w>=]])
+key.lnmap('wo', [[:only<cr>]])
+key.lnmap('wr', [[<C-w>r]])
 
 -- +git
-util.lnmap('gp', [[:Git push<cr>]])
-util.lnmap('gg', [[:vertical Git<cr>]])
-util.lnmap('gd', [[:Gvdiffsplit<cr>]])
+key.lnmap('gp', [[:Git push<cr>]])
+key.lnmap('gg', [[:vertical Git<cr>]])
+key.lnmap('gd', [[:Gvdiffsplit<cr>]])

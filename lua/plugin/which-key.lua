@@ -1,4 +1,5 @@
 local util = require('junkbox.util')
+local key = require('junkbox.key')
 local which_key_register = vim.fn['which_key#register']
 
 util.exec [[
@@ -11,7 +12,7 @@ util.exec [[
 vim.g.which_key_use_floating_win = 0
 vim.g.which_key_timeout = 250
 
-util.lnmap('', [[:WhichKey '<space>'<cr>]])
+key.lnmap('', [[:WhichKey '<space>'<cr>]])
 
 local toggles_group = {
   name = '+toggles',

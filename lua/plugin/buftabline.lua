@@ -1,6 +1,6 @@
-local util = require('junkbox.util')
+local key = require('junkbox.key')
 local map = function(op, index, prefix)
-  util.lnmap(
+  key.lnmap(
     string.format('%s%d', prefix or '', index),
     string.format(":lua require('buftabline').%s(%d)<cr>", op, index)
   )

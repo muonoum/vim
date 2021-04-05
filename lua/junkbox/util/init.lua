@@ -1,41 +1,33 @@
-local function lmap(mode, key, action, opts)
-  vim.api.nvim_set_keymap(mode, '<leader>' .. key, action, opts or {})
-end
-
 local function ends_with(str, pattern)
   return str:sub(-string.len(pattern)) == pattern
 end
 
 local M = {}
 
-M.nmapfn = function(key, func, opts)
-  M.mapfn('n', key, func, opts)
-end
+M.hiddenbufdo = function(what)
+  local bufs = vim.api.nvim_list_bufs()
+  if #bufs == 0 then return end
+  local cmds = {}
 
-M.func_map = {}
+  for i=1,#bufs do
+    if vim.fn.bufwinnr(bufs[i]) < 1 then
+      table.insert(cmds, string.format(
+        '%d%s', bufs[i], what
+      ))
+    end
+  end
 
-M.mapfn = function(mode, key, func, opts)
-  opts = opts or {}
-  opts.noremap = true
-
-  local name = 'map_func_' .. #M.func_map
-  M.func_map[name] = func
-
-  local cmd = string.format(
-    ":lua require'junkbox.util'.func_map['%s']()<cr>", name
-  )
-
-  if mode == 'i' then cmd = '<C-o>' .. cmd end
-  vim.api.nvim_set_keymap(mode, key, cmd, opts)
+  local cmd = table.concat(cmds, '|')
+  -- print(cmd)
+  vim.cmd(cmd)
 end
 
 M.otherbufdo = function(what)
   local bufs = vim.api.nvim_list_bufs()
   if #bufs == 0 then return end
-
-  local active = vim.fn.winbufnr(vim.fn.winnr())
   local cmds = {}
 
+  local active = vim.fn.winbufnr(vim.fn.winnr())
   local first = (bufs[0] or bufs[1])
   if active ~= first then
     table.insert(cmds, string.format(
@@ -50,7 +42,7 @@ M.otherbufdo = function(what)
   end
 
   local cmd = table.concat(cmds, '|')
-  print(cmd)
+  -- print(cmd)
   vim.cmd(cmd)
 end
 
@@ -81,14 +73,6 @@ M.hi = function(group)
     local cmd = table.concat(r, ' ')
     vim.cmd(cmd)
   end
-end
-
-M.lvmap = function(key, action, opts)
-  lmap('v', key, action, opts)
-end
-
-M.lnmap = function(key, action, opts)
-  lmap('n', key, action, opts)
 end
 
 return M
