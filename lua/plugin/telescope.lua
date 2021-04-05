@@ -10,14 +10,6 @@ telescope.setup {
   }
 }
 
-vim.api.nvim_exec([[
-  highlight TelescopeBorder        guifg=#555555
-  highlight TelescopePromptBorder  guifg=#555555
-  highlight TelescopeResultsBorder guifg=#555555
-  highlight TelescopePreviewBorder guifg=#555555
-  highlight TelescopePromptPrefix  guifg=#555555
-]], false)
-
 _G.git_files_or_find_files = function()
   local opts = {}
   local ok = pcall(require'telescope.builtin'.git_files, opts)

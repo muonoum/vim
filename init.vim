@@ -17,6 +17,35 @@ end
 
 """
 
+function Highlights()
+  highlight Normal guibg=none
+
+  highlight VertSplit guibg=#101010 guifg=#101010
+
+  highlight StatusLineNC guifg=#101010
+  highlight StatusLine guifg=#101010
+
+  highlight PMenu guibg=#222222
+  highlight PMenuSel guifg=#000000 guibg=#928374 gui=bold
+
+  highlight Todo guifg=#000000 guibg=#928374 gui=bold
+
+  highlight TabLineFill guifg=#444444 guibg=#000000 gui=none
+  highlight TabLine guifg=#666666 guibg=#222222 gui=none
+  highlight TabLineSel guifg=#000000 guibg=#928374 gui=bold
+
+  highlight TelescopeBorder guifg=#555555
+  highlight TelescopePromptBorder guifg=#555555
+  highlight TelescopeResultsBorder guifg=#555555
+  highlight TelescopePreviewBorder guifg=#555555
+  highlight TelescopePromptPrefix guifg=#555555
+endfunction
+
+augroup highlights
+  autocmd!
+  autocmd ColorScheme * call Highlights()
+augroup END
+
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
 colorscheme gruvbox
@@ -24,12 +53,6 @@ set background=dark
 
 """
 
-highlight Normal guibg=none
-highlight VertSplit guibg=#101010 guifg=#101010
-highlight StatusLineNC guifg=#101010
-highlight StatusLine guifg=#101010
-highlight PMenu guibg=#222222
-highlight PMenuSel guifg=#000000 guibg=#928374 gui=bold
 
 """
 
