@@ -1,25 +1,25 @@
 return function()
-  local util = require'junkbox.util'
+  local hl = require'junkbox.util'.hl
 
-  util.hl 'Normal' {guibg='none'}
+  hl 'Normal' {guibg='none'}
 
-  util.hl 'VertSplit' {guifg='#101010', guibg='#101010'}
+  hl 'VertSplit' {guifg='#101010', guibg='#101010'}
 
-  util.hl 'StatusLineNC' {guifg='#101010'}
-  util.hl 'StatusLine' {guifg='#101010'}
+  hl 'StatusLineNC' {guifg='#101010'}
+  hl 'StatusLine' {guifg='#101010'}
 
-  util.hl 'PMenu' {guibg='#222222'}
-  util.hl 'PMenuSel' {guifg='#000000', guibg='#928374', gui='bold'}
+  hl 'PMenu' {guibg='#222222'}
+  hl 'PMenuSel' {guifg='#000000', guibg='#928374', gui='bold'}
 
-  util.hl 'Todo' {guifg='#000000', guibg='#928374', gui='bold'}
+  hl 'Todo' {guifg='#000000', guibg='#928374', gui='bold'}
 
-  util.hl 'TabLineFill' {guifg='#444444', guibg='#000000', gui='none'}
-  util.hl 'TabLine' {guifg='#666666', guibg='#222222', gui='none'}
-  util.hl 'TabLineSel' {guifg='#000000', guibg='#928374', gui='bold'}
+  hl 'TabLineFill' {guifg='#444444', guibg='#000000', gui='none'}
+  hl 'TabLine' {guifg='#666666', guibg='#222222', gui='none'}
+  hl 'TabLineSel' {guifg='#000000', guibg='#928374', gui='bold'}
 
-  util.hl 'TelescopeBorder' {guifg='#555555'}
-  util.hl 'TelescopePromptBorder' {guifg='#555555'}
-  util.hl 'TelescopeResultsBorder' {guifg='#555555'}
-  util.hl 'TelescopePreviewBorder' {guifg='#555555'}
-  util.hl 'TelescopePromptPrefix' {guifg='#555555'}
+  hl 'TelescopeBorder' {guifg='#555555'}
+  hl 'TelescopePromptBorder' {guifg='#555555'}
+  hl 'TelescopeResultsBorder' {guifg='#555555'}
+  hl 'TelescopePreviewBorder' {guifg='#555555'}
+  hl 'TelescopePromptPrefix' {guifg='#555555'}
 end
