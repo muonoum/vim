@@ -25,6 +25,13 @@ local files_group = {
   f     = 'find',
 }
 
+local buffers_wipe_group = {
+  name  = '+wipe',
+  o     = 'wipe-others',
+  h     = 'wipe-hidden',
+  a     = 'wipe-all',
+}
+
 local buffers_group = {
   name  = '+buffers',
   f     = 'find',
@@ -32,10 +39,7 @@ local buffers_group = {
   s     = 'split',
   v     = 'vsplit',
   a     = 'all',
-  D     = 'delete-others',
-  W     = 'wipe-others',
-  -- D     = 'delete-all',
-  -- W     = 'wipe-all',
+  w     = buffers_wipe_group,
 }
 
 local windows_group = {

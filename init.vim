@@ -71,7 +71,8 @@ command! Q q
 command! WQ wq
 command! Wq wq
 
-command! -nargs=1 OtherBufDo lua require'junkbox.util'.otherbufdo(<f-args>)
+command! -nargs=1 OtherBufDo  lua require'junkbox.util'.otherbufdo(<f-args>)
+command! -nargs=1 HiddenBufDo lua require'junkbox.util'.hiddenbufdo(<f-args>)
 
 tnoremap <Esc> <C-\><C-n>
 
