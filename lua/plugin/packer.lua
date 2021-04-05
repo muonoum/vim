@@ -84,6 +84,10 @@ return require('packer').startup(
       config = function() require'colorizer'.setup() end,
     }
 
+    use { 'rafcamlet/nvim-luapad',
+      opt = true,
+    }
+
     use { 'tpope/vim-commentary' }
     use { 'tpope/vim-fugitive' }
     use { 'tpope/vim-repeat' }
