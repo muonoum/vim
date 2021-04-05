@@ -8,6 +8,27 @@ end
 
 local M = {}
 
+M.nmapfn = function(key, func, opts)
+  M.mapfn('n', key, func, opts)
+end
+
+M.func_map = {}
+
+M.mapfn = function(mode, key, func, opts)
+  opts = opts or {}
+  opts.noremap = true
+
+  local name = 'map_func_' .. #M.func_map
+  M.func_map[name] = func
+
+  local cmd = string.format(
+    ":lua require'junkbox.util'.func_map['%s']()<cr>", name
+  )
+
+  if mode == 'i' then cmd = '<C-o>' .. cmd end
+  vim.api.nvim_set_keymap(mode, key, cmd, opts)
+end
+
 M.otherbufdo = function(what)
   local bufs = vim.api.nvim_list_bufs()
   if #bufs == 0 then return end
