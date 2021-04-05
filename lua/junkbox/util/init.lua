@@ -15,9 +15,10 @@ M.otherbufdo = function(what)
   local active = vim.fn.winbufnr(vim.fn.winnr())
   local cmds = {}
 
-  if active ~= (bufs[0] or bufs[1]) then
+  local first = (bufs[0] or bufs[1])
+  if active ~= first then
     table.insert(cmds, string.format(
-      '1,%d-%s', active, what
+      '%d,%d-%s', first, active, what
     ))
   end
 
