@@ -73,10 +73,7 @@ command! Q q
 command! WQ wq
 command! Wq wq
 
-" nnoremap gb :<c-u>exec (v:count ? 'b '.v:count : 'bn')<cr>
-" nnoremap gB :<c-u>exec (v:count ? 'b '.v:count : 'bp')<cr>
-" nnoremap gl :ls<cr>:b<space>
-" nnoremap gv :ls<cr>:vertical sb<space>
+command! -nargs=1 OtherBufDo lua require'junkbox.util'.otherbufdo(<f-args>)
 
 tnoremap <Esc> <C-\><C-n>
 

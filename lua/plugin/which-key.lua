@@ -31,8 +31,10 @@ local buffers_group = {
   s     = 'split',
   v     = 'vsplit',
   a     = 'all',
-  D     = 'delete-all',
-  W     = 'wipe-all',
+  D     = 'delete-others',
+  W     = 'wipe-others',
+  -- D     = 'delete-all',
+  -- W     = 'wipe-all',
 }
 
 local windows_group = {

@@ -27,8 +27,10 @@ util.lnmap('bl', [[:ls<cr>:b<space>]])
 util.lnmap('bs', [[:ls<cr>:sb<space>]])
 util.lnmap('bv', [[:ls<cr>:vertical sb<space>]])
 util.lnmap('ba', [[:vertical ball<cr>]])
-util.lnmap('bD', [[:%bdelete!<cr>]])
-util.lnmap('bW', [[:%bwipeout!<cr>]])
+util.lnmap('bD', [[:OtherBufDo bdelete!<cr>]])
+util.lnmap('bW', [[:OtherBufDo bwipeout!<cr>]])
+-- util.lnmap('bD', [[:%bdelete!<cr>]])
+-- util.lnmap('bW', [[:%bwipeout!<cr>]])
 
 -- +windows
 util.lnmap('ww', [[<Plug>(golden_ratio_resize)]])
