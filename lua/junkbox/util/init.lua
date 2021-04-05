@@ -28,7 +28,7 @@ M.otherbufdo = function(what)
     ))
   end
 
-  local cmd = table.concat(cmds, ' | ')
+  local cmd = table.concat(cmds, '|')
   print(cmd)
   vim.cmd(cmd)
 end

@@ -29,9 +29,6 @@ set background=dark
 
 """
 
-
-"""
-
 augroup vimrc
   autocmd!
   autocmd BufWritePre * %s/\s\+$//e
