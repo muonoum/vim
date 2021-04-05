@@ -3,7 +3,7 @@ local colors = require'config.palette'
 local function mode_colors(a, b, c)
  return {
     a = { fg = colors.black, bg = a, gui = 'bold' },
-    b = { fg = colors.gray1, bg = b or colors.black },
+    b = { fg = colors.gray3, bg = b or colors.black },
     c = { fg = colors.gray2, bg = c or colors.black },
   }
 end
@@ -16,7 +16,7 @@ local theme = {
   replace = mode_colors(colors.red),
   terminal = mode_colors(colors.aqua),
   inactive = mode_colors(
-    colors.gray3, colors.gray3, colors.gray3
+    colors.gray1, colors.gray1, colors.gray1
   ),
 }
 

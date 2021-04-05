@@ -1,6 +1,6 @@
 return function()
-  local hl = require'junkbox.util'.hl
   local c = require'config.palette'
+  local hl = require'junkbox.util'.hl
 
   hl 'Normal' { guibg='none' }
 
@@ -18,9 +18,9 @@ return function()
   hl 'TabLine' { guifg=c.gray4, guibg=c.gray2, gui='none' }
   hl 'TabLineSel' { guifg=c.black, guibg=c.brown, gui='bold' }
 
-  hl 'TelescopeBorder' { guifg=c.gray3 }
-  hl 'TelescopePromptBorder' { guifg=c.gray3 }
-  hl 'TelescopeResultsBorder' { guifg=c.gray3 }
-  hl 'TelescopePreviewBorder' { guifg=c.gray3 }
-  hl 'TelescopePromptPrefix' { guifg=c.gray3 }
+  hl 'TelescopeBorder' { guifg=c.gray2 }
+  hl 'TelescopePromptBorder' { guifg=c.gray2 }
+  hl 'TelescopeResultsBorder' { guifg=c.gray2 }
+  hl 'TelescopePreviewBorder' { guifg=c.gray2 }
+  hl 'TelescopePromptPrefix' { guifg=c.gray2 }
 end
