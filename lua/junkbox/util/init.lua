@@ -49,6 +49,19 @@ M.source = function()
   print("sourced " .. current_file)
 end
 
+M.hl = function(group)
+  local r = {'highlight', group}
+
+  return function(props)
+    for k, v in pairs(props) do
+      table.insert(r, k..'='..v)
+    end
+
+    local cmd = table.concat(r, ' ')
+    vim.cmd(cmd)
+  end
+end
+
 M.lvmap = function(key, action, opts)
   lmap('v', key, action, opts)
 end
