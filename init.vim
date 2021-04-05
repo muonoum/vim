@@ -28,6 +28,8 @@ highlight Normal guibg=none
 highlight VertSplit guibg=#101010 guifg=#101010
 highlight StatusLineNC guifg=#101010
 highlight StatusLine guifg=#101010
+highlight PMenu guibg=#222222
+highlight PMenuSel guifg=#000000 guibg=#928374 gui=bold
 
 """
 
