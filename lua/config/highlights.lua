@@ -7,11 +7,11 @@ return function()
   hi 'StatusLineNC' { guifg=c.gray1 }
   hi 'StatusLine' { guifg=c.gray1 }
   hi 'PMenu' { guibg=c.gray2 }
-  hi 'PMenuSel' { guifg=c.black, guibg=c.brown, gui='bold' }
-  hi 'Todo' { guifg=c.black, guibg=c.brown, gui='bold' }
+  hi 'PMenuSel' { guifg=c.black, guibg=c.accent, gui='bold' }
+  hi 'Todo' { guifg=c.black, guibg=c.accent, gui='bold' }
   hi 'TabLineFill' { guifg=c.gray3, guibg=c.black, gui='none' }
   hi 'TabLine' { guifg=c.gray4, guibg=c.gray2, gui='none' }
-  hi 'TabLineSel' { guifg=c.black, guibg=c.brown, gui='bold' }
+  hi 'TabLineSel' { guifg=c.black, guibg=c.accent, gui='bold' }
   hi 'TelescopeBorder' { guifg=c.gray2 }
   hi 'TelescopePromptBorder' { guifg=c.gray2 }
   hi 'TelescopeResultsBorder' { guifg=c.gray2 }

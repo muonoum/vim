@@ -53,11 +53,22 @@ return require('packer').startup(
       config = function() require('plugin.lspconfig') end,
     }
 
-    use { 'gruvbox-community/gruvbox' }
+    use { 'cocopon/iceberg.vim' }
+
+    use { 'gruvbox-community/gruvbox',
+      config = function()
+        vim.g.gruvbox_contrast_dark = 'hard'
+        vim.g.gruvbox_contrast_light = 'hard'
+      end,
+    }
 
     use { 'npxbr/gruvbox.nvim',
       requires = { 'rktjmp/lush.nvim' },
       disable = true,
+      config = function()
+        vim.g.gruvbox_contrast_dark = 'hard'
+        vim.g.gruvbox_contrast_light = 'hard'
+      end,
     }
 
     use { 'nvim-telescope/telescope.nvim',

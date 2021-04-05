@@ -9,12 +9,12 @@ local function mode_colors(a, b, c)
 end
 
 local theme = {
-  normal = mode_colors(colors.brown),
-  visual = mode_colors(colors.yellow),
-  insert = mode_colors(colors.blue),
-  command = mode_colors(colors.purple),
-  replace = mode_colors(colors.red),
-  terminal = mode_colors(colors.aqua),
+  normal = mode_colors(colors.normal),
+  visual = mode_colors(colors.visual),
+  insert = mode_colors(colors.insert),
+  command = mode_colors(colors.command),
+  replace = mode_colors(colors.replace),
+  terminal = mode_colors(colors.terminal),
   inactive = mode_colors(
     colors.gray1, colors.gray1, colors.gray1
   ),

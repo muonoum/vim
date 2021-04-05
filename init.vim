@@ -22,8 +22,7 @@ augroup highlights
   autocmd ColorScheme * lua require'config.highlights'()
 augroup END
 
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_contrast_light = 'hard'
+" colorscheme iceberg
 colorscheme gruvbox
 set background=dark
 
