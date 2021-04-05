@@ -49,7 +49,7 @@ M.source = function()
   print("sourced " .. current_file)
 end
 
-M.hl = function(group)
+M.hi = function(group)
   local r = {'highlight', group}
 
   return function(props)

@@ -1,26 +1,26 @@
 return function()
   local c = require'config.palette'
-  local hl = require'junkbox.util'.hl
+  local hi = require'junkbox.util'.hi
 
-  hl 'Normal' { guibg='none' }
+  hi 'Normal' { guibg='none' }
 
-  hl 'VertSplit' { guifg=c.gray1, guibg=c.gray1 }
+  hi 'VertSplit' { guifg=c.gray1, guibg=c.gray1 }
 
-  hl 'StatusLineNC' { guifg=c.gray1 }
-  hl 'StatusLine' { guifg=c.gray1 }
+  hi 'StatusLineNC' { guifg=c.gray1 }
+  hi 'StatusLine' { guifg=c.gray1 }
 
-  hl 'PMenu' { guibg=c.gray2 }
-  hl 'PMenuSel' { guifg=c.black, guibg=c.brown, gui='bold' }
+  hi 'PMenu' { guibg=c.gray2 }
+  hi 'PMenuSel' { guifg=c.black, guibg=c.brown, gui='bold' }
 
-  hl 'Todo' { guifg=c.black, guibg=c.brown, gui='bold' }
+  hi 'Todo' { guifg=c.black, guibg=c.brown, gui='bold' }
 
-  hl 'TabLineFill' { guifg=c.gray3, guibg=c.black, gui='none' }
-  hl 'TabLine' { guifg=c.gray4, guibg=c.gray2, gui='none' }
-  hl 'TabLineSel' { guifg=c.black, guibg=c.brown, gui='bold' }
+  hi 'TabLineFill' { guifg=c.gray3, guibg=c.black, gui='none' }
+  hi 'TabLine' { guifg=c.gray4, guibg=c.gray2, gui='none' }
+  hi 'TabLineSel' { guifg=c.black, guibg=c.brown, gui='bold' }
 
-  hl 'TelescopeBorder' { guifg=c.gray2 }
-  hl 'TelescopePromptBorder' { guifg=c.gray2 }
-  hl 'TelescopeResultsBorder' { guifg=c.gray2 }
-  hl 'TelescopePreviewBorder' { guifg=c.gray2 }
-  hl 'TelescopePromptPrefix' { guifg=c.gray2 }
+  hi 'TelescopeBorder' { guifg=c.gray2 }
+  hi 'TelescopePromptBorder' { guifg=c.gray2 }
+  hi 'TelescopeResultsBorder' { guifg=c.gray2 }
+  hi 'TelescopePreviewBorder' { guifg=c.gray2 }
+  hi 'TelescopePromptPrefix' { guifg=c.gray2 }
 end
