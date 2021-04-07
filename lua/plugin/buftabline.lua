@@ -21,4 +21,5 @@ require("buftabline").setup{
   hlgroup_current = 'TabLineSel',
   hlgroup_normal = 'TabLine',
   hlgroup_hidden = 'TabLineFill',
+  show_flags = false,
 }

@@ -21,11 +21,11 @@ local icy = {}
 icy.black = '#000000'
 
 icy.gray1 = '#090c15'
-icy.gray2 = '#191c25'
+icy.gray2 = '#1e2132'
 icy.gray3 = '#393c45'
 icy.gray4 = '#595c65'
 
-icy.accent = '#b5b4c9'
+icy.accent = '#b3b2c7'
 
 icy.normal   = icy.accent
 icy.insert   = '#83a598'

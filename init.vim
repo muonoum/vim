@@ -1,4 +1,5 @@
 let g:mapleader = "\<space>"
+
 let g:vimsyn_embed= 'l'
 let &showbreak="» "
 let &undodir = stdpath('data').'/undo'
@@ -17,7 +18,7 @@ end
 
 """
 
-augroup highlights
+augroup adjust_colorscheme
   autocmd!
   autocmd ColorScheme * lua require'config.highlights'()
 augroup END
@@ -31,7 +32,7 @@ set background=dark
 augroup vimrc
   autocmd!
   autocmd BufWritePre * %s/\s\+$//e
-  autocmd BufWritePre * v/\_s*\S/d
+  autocmd BufWritePre * silent! v/\_s*\S/d
   autocmd FileType * setlocal formatoptions-=cro
   autocmd FileType * setlocal nocursorline
   autocmd TermOpen term://* startinsert
@@ -41,7 +42,6 @@ augroup END
 
 """
 
-set mouse=a
 set autoread
 set backspace=indent,eol,start
 set expandtab smarttab tabstop=2 softtabstop=2 shiftwidth=2
@@ -50,8 +50,8 @@ set hidden
 set incsearch ignorecase smartcase hlsearch wrapscan
 set lazyredraw
 set nolist
-set nowrap linebreak breakindent
-set ruler noshowcmd noshowmode laststatus=2
+set wrap linebreak breakindent
+set ruler noshowcmd showmode laststatus=0
 set scrolloff=1 sidescrolloff=2
 set shortmess=filnxtToOIc
 set splitright splitbelow

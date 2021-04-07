@@ -1,18 +1,20 @@
 local key = require('junkbox.key')
 
-key.lnmap('<space>', [[:bnext<cr>]])
-key.lnmap('<bs>', [[:bprevious<cr>]])
+key.lnmap('<space>', [[:BufNext<cr>]])
+key.lnmap('<bs>', [[:BufPrevious<cr>]])
 
 key.lnmap('j',  [[%! jq .<cr>]])
 key.lvmap('64', [[c<c-r>=system('base64 --decode', @")<cr><esc>]])
 
 -- +top
-key.lnmap('%',  [[:lua require'junkbox.util'.source()<cr>]], { silent = true })
+key.lnmap('/',  [[:Telescope live_grep<cr>]])
+key.lnmap('%',  require'junkbox.util'.source, { silent = true })
 key.lnmap('k',  [[:close<cr>]])
-key.lnmap('q',  [[:Sayonara<cr>]], {silent = true})
+key.lnmap('q',  [[:Sayonara<cr>]], { silent = true })
 key.lnmap('c',  [[:lcd %:p:h<cr>:pwd<cr>]])
 key.lnmap('-',  [[:vsplit $PWD<cr>]])
 key.lnmap('T',  [[:vsplit | term<cr>]])
+-- key.lnmap('#',  [[:BufferPick<cr>]])
 
 -- +toggles
 key.lnmap('tw', [[:set wrap!<cr>]])

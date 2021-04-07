@@ -21,12 +21,26 @@ local theme = {
 }
 
 require 'lualine'.setup{
-  sections = {
-    lualine_a = { 'mode' },
-    lualine_b = { 'filename' };
-    lualine_c = { 'branch' },
+  -- tabline = {
+  --   lualine_a = { 'buffers' },
+  --   lualine_b = { };
+  --   lualine_c = { },
 
-    lualine_x = { 'encoding', 'filetype' },
+  --   lualine_x = { 'filetype' },
+  --   lualine_y = { 'progress' },
+  --   lualine_z = { 'location' },
+  -- },
+
+  sections = {
+    -- lualine_a = { 'mode' },
+    -- lualine_b = { 'filename' };
+    -- lualine_c = { 'branch' },
+    lualine_a = { 'filename' },
+    lualine_b = { 'branch' };
+    lualine_c = { },
+
+    -- lualine_x = { 'encoding', 'filetype' },
+    lualine_x = { 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' },
   },

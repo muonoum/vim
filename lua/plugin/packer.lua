@@ -21,6 +21,17 @@ return require('packer').startup(
     }
 
     use {
+      'romgrk/barbar.nvim',
+      config = function() require('plugin.barbar') end,
+      disable = true,
+    }
+
+    use { 'hoob3rt/lualine.nvim',
+      disable = true,
+      config = function() require('plugin.lualine') end,
+    }
+
+    use {
       'spektroskop/buftabline.nvim',
       config = function() require('plugin.buftabline') end,
       branch = 'highlight-hidden',
@@ -33,10 +44,6 @@ return require('packer').startup(
     use { 'fatih/vim-go',
       ft = { 'go' },
       config = function() require('plugin.go') end,
-    }
-
-    use { 'hoob3rt/lualine.nvim',
-      config = function() require('plugin.lualine') end,
     }
 
     use { 'hrsh7th/nvim-compe',
