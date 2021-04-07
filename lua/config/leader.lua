@@ -1,7 +1,7 @@
 local key = require('junkbox.key')
 
 key.lnmap('<space>', [[:BufNext<cr>]])
-key.lnmap('<bs>', [[:BufPrevious<cr>]])
+key.lnmap('<bs>', [[:BufPrev<cr>]])
 
 key.lnmap('j',  [[%! jq .<cr>]])
 key.lvmap('64', [[c<c-r>=system('base64 --decode', @")<cr><esc>]])
