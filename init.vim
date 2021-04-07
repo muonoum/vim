@@ -63,7 +63,7 @@ set winwidth=5 winminwidth=5 winheight=1 winminheight=1
 
 """
 
-map - :lua require'junkbox.telescope'.file_browser()<cr>
+" map - :lua require'junkbox.telescope'.file_browser()<cr>
 
 command! W w
 command! Q q
