@@ -3,7 +3,6 @@ command! Q q
 command! WQ wq
 command! Wq wq
 
-tnoremap <Esc> <C-\><C-n>
 nnoremap <c-s> :update<cr>
 nnoremap Q <nop>
 noremap <S-k> k
@@ -15,3 +14,6 @@ onoremap <cr> <esc>
 inoremap <cr> <esc>`^
 xnoremap p pgvy
 xnoremap P Pgvy
+
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-v><Esc> <Esc>

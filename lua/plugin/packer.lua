@@ -29,10 +29,6 @@ return require('packer').startup(
       config = function() require('plugin.compe') end,
     }
 
-    use { 'liuchengxu/vim-which-key',
-      config = function() require('plugin.which-key') end,
-    }
-
     use { 'mhinz/vim-sayonara', cmd = 'Sayonara' }
 
     use { 'neovim/nvim-lspconfig',
