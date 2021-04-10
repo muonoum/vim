@@ -1,3 +1,9 @@
+let &showbreak = '>> '
+let &undodir = stdpath('data').'/undo'
+let @/ = ""
+let netrw_cursor = 0
+let vimsyn_embed =  'l'
+
 set autoread
 set backspace=indent,eol,start
 set expandtab smarttab tabstop=4 softtabstop=2 shiftwidth=2
@@ -5,8 +11,7 @@ set formatoptions+=j
 set hidden
 set incsearch ignorecase smartcase hlsearch wrapscan
 set lazyredraw
-"set list listchars=eol:¬,tab:⍿·,trail:·
-set list listchars=tab:⍿·,trail:·
+set list listchars=tab:⍿·,trail:· " eol:¬
 set noruler noshowcmd showmode laststatus=2
 set undofile noswapfile
 set nowrap linebreak breakindent
