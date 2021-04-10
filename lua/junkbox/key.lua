@@ -1,10 +1,13 @@
 local M = {}
 
 M.map = function(mode, key, arg, opts)
+  local opts = opts or {}
+  -- opts.noremap = true
+
   if type(arg) == 'string' then
-    vim.api.nvim_set_keymap(mode, key, arg, opts or {})
+    vim.api.nvim_set_keymap(mode, key, arg, opts)
   elseif type(arg) == 'function' then
-    M.mapfn(mode, key, arg, opts or {})
+    M.mapfn(mode, key, arg, opts)
   end
 end
 
