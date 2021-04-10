@@ -1,17 +1,8 @@
-set nocompatible
-filetype plugin indent on
-syntax on
-
-let &showbreak = '>> '
-let &undodir = stdpath('data').'/undo'
-let @/ = ""
-let netrw_cursor = 0
-let vimsyn_embed =  'l'
-
+runtime config/setup.vim
 lua require 'config.leader'
-runtime statusline.vim
-runtime options.vim
-runtime colorscheme.vim
-runtime maps.vim
-runtime commands.vim
-runtime autocommands.vim
+runtime config/statusline.vim
+runtime config/options.vim
+runtime config/colorscheme.vim
+runtime config/maps.vim
+runtime config/commands.vim
+runtime config/autocommands.vim
