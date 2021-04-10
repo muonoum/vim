@@ -20,27 +20,6 @@ return require('packer').startup(
       branch = 'skip-neovim-floating-windows',
     }
 
-    use {
-      'romgrk/barbar.nvim',
-      config = function() require('plugin.barbar') end,
-      disable = true,
-    }
-
-    use { 'hoob3rt/lualine.nvim',
-      disable = true,
-      config = function() require('plugin.lualine') end,
-    }
-
-    use {
-      'spektroskop/buftabline.nvim',
-      config = function() require('plugin.buftabline') end,
-      branch = 'highlight-hidden',
-    }
-
-    use { 'dstein64/vim-startuptime',
-      cmd = 'StartupTime',
-    }
-
     use { 'fatih/vim-go',
       ft = { 'go' },
       config = function() require('plugin.go') end,
@@ -69,15 +48,6 @@ return require('packer').startup(
       end,
     }
 
-    use { 'npxbr/gruvbox.nvim',
-      requires = { 'rktjmp/lush.nvim' },
-      disable = true,
-      config = function()
-        vim.g.gruvbox_contrast_dark = 'hard'
-        vim.g.gruvbox_contrast_light = 'hard'
-      end,
-    }
-
     use { 'nvim-telescope/telescope.nvim',
       requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
       config = function() require('plugin.telescope') end,
@@ -94,16 +64,8 @@ return require('packer').startup(
 
     use { 'romainl/vim-cool' }
 
-    use { 'sheerun/vim-polyglot',
-      config = function() require('plugin.polyglot') end,
-    }
-
     use { 'norcalli/nvim-colorizer.lua',
       config = function() require'colorizer'.setup() end,
-    }
-
-    use { 'rafcamlet/nvim-luapad',
-      cmd = { 'Luapad' }
     }
 
     use { 'tpope/vim-commentary' }
@@ -112,5 +74,8 @@ return require('packer').startup(
     use { 'tpope/vim-surround' }
     use { 'tpope/vim-unimpaired' }
     use { 'tpope/vim-vinegar' }
+
+    use { 'pearofducks/ansible-vim' }
+    use { 'tommcdo/vim-lion' }
   end
 )
