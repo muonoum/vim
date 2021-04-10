@@ -15,4 +15,3 @@ onoremap <cr> <esc>
 inoremap <cr> <esc>`^
 xnoremap p pgvy
 xnoremap P Pgvy
-nnoremap <bs> <C-^>
