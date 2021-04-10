@@ -1,7 +1,9 @@
 local key = require('junkbox.key')
 
-key.lnmap('<space>', [[:BufNext<cr>]])
-key.lnmap('<bs>', [[:BufPrev<cr>]])
+vim.g.mapleader = ' '
+
+key.lnmap('<space>', [[:bnext<cr>]])
+key.lnmap('<bs>', [[:bprev<cr>]])
 
 key.lnmap('j',  [[%! jq .<cr>]])
 key.lvmap('64', [[c<c-r>=system('base64 --decode', @")<cr><esc>]])
@@ -14,7 +16,7 @@ key.lnmap('q',  [[:Sayonara<cr>]], { silent = true })
 key.lnmap('c',  [[:lcd %:p:h<cr>:pwd<cr>]])
 key.lnmap('-',  [[:vsplit $PWD<cr>]])
 key.lnmap('T',  [[:vsplit | term<cr>]])
--- key.lnmap('#',  [[:BufferPick<cr>]])
+key.lnmap('#',  [[:Telescope buffers<cr>]])
 
 -- +toggles
 key.lnmap('tw', [[:set wrap!<cr>]])
