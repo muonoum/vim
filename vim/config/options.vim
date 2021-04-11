@@ -15,6 +15,7 @@ set hidden
 set incsearch ignorecase smartcase hlsearch wrapscan
 set lazyredraw
 set list listchars=tab:⍿·,trail:· " eol:¬
+set nocursorline
 set nomodeline
 set noruler noshowcmd showmode laststatus=2
 set nowrap linebreak breakindent
