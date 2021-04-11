@@ -1,27 +1,27 @@
-function! StatusLine(hl, left, right, ...)
+func! StatusLine(hl, left, right, ...)
   let space = get(a:, 1, 1)
   let spacing = join(map(range(1,space), '" "'), '')
 
   let left = join(filter(a:left, '!empty(v:val)'), spacing)
   let right = join(filter(a:right, '!empty(v:val)'), spacing)
   return join([left, '%#' . a:hl . '#%=%*', right], '')
-endfunction
+endf
 
-function! StatusComponent(hl, ...)
+func! StatusComponent(hl, ...)
   let value = get(a:, 1, 0)
   let pad = get(a:, 2, 0)
   let padding = join(map(range(1, pad), '" "'), '')
 
   return empty(value) ? '' : '%#' . a:hl . '#' . padding . value . padding . '%*'
-endfunction
+endf
 
-function! StatusLinePath()
+func! StatusLinePath()
   let path = pathshorten(expand('%:f'))
   if empty(path) | return '[No Name]' | endif
   return path
-endfunction
+endf
 
-function! StatusLineActive()
+func! StatusLineActive()
   let a = StatusComponent('ActiveStatusLine1', '%.30{StatusLinePath()}%h%w%m%r', 1)
   let b = StatusComponent('ActiveStatusLine2', '%.30{FugitiveHead()}')
   let c = StatusComponent('ActiveStatusLine3', ' ')
@@ -31,19 +31,19 @@ function! StatusLineActive()
   let z = StatusComponent('ActiveStatusLine1', '%4P %3l:%-2c', 1)
 
   return StatusLine('StatusLineFill', [a, b, c], [x, y, z], 2)
-endfunction
+endf
 
-function! StatusLineInactive()
+func! StatusLineInactive()
   let a = StatusComponent('InactiveStatusLine1', '')
   let b = StatusComponent('InactiveStatusLine2', '')
-  let c = StatusComponent('InactiveStatusLine3', '%.30{StatusLinePath()}%h%w%m%r', 1)
+  let c = StatusComponent('InactiveStatusLine3', '%.30t%h%w%m%r', 1)
 
   let x = StatusComponent('InactiveStatusLine3', '%3l:%-2c', 1)
   let y = StatusComponent('InactiveStatusLine2', '')
   let z = StatusComponent('InactiveStatusLine1', '')
 
   return StatusLine('StatusLineFill', [a, b, c], [x, y, z], 1)
-endfunction
+endf
 
 augroup SetStatusline
   autocmd!

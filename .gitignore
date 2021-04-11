@@ -1,5 +1,8 @@
-/archive
-plugin/packer_compiled.vim
-.netrwhist
-.DS_Store
 *.swp
+*.un~
+.DS_Store
+.netrwhist
+/archive
+/pack
+/plugs-local
+/undo
