@@ -20,7 +20,7 @@ local function make_colors()
   local colors = {}
   local scheme = scheme_colors[vim.g.colors_name] or {}
   for k, v in pairs(default_colors) do colors[k] = v end
-  for k, v in pairs(scheme_colors) do colors[k] = v end
+  for k, v in pairs(scheme) do colors[k] = v end
   return colors
 end
 
