@@ -23,18 +23,18 @@ else
   \ },
   \}
 
-  func! s:setup()
-    let palette = {}
+  func! s:make_colors()
+    let colors = {}
     let scheme = {}
     try | let scheme =  s:scheme[g:colors_name]
     catch | endtry
     for [k, v] in items(s:default)
-      let palette[k] = v
+      let colors[k] = v
     endfor
     for [k, v] in items(scheme)
-      let palette[k] = v
+      let colors[k] = v
     endfor
-    return palette
+    return colors
   endf
 
   func! s:highlight(group, props)
@@ -45,12 +45,12 @@ else
     execute join(r, ' ')
   endf
 
-  func! s:color(palette, name)
-    return get(a:palette, a:name, 'magenta')
+  func! s:color(colors, name)
+    return get(a:colors, a:name, 'magenta')
   endf
 
   func! s:highlights()
-    let c = s:setup()
+    let c = s:make_colors()
 
     call s:highlight('Normal', {
     \ 'ctermbg': 'NONE',
