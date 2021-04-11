@@ -12,5 +12,5 @@ if isdirectory(bin) && stridx($PATH, bin) == -1
   let $PATH .= ':' . bin
 endif
 
-runtime! vim/*.vim
+runtime! vim/**/*.vim
 runtime! after/**/*.vim
