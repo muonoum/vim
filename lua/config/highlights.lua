@@ -34,8 +34,8 @@ return function()
   hi 'PMenu' { guibg=c.gray2 }
   hi 'PMenuSel' { guifg=c.black, guibg=c.accent, gui='bold' }
   hi 'SpecialKey' { guifg=c.gray2 }
-  hi 'StatusLine' { guifg=c.gray1 }
-  hi 'StatusLineNC' { guifg=c.gray1 }
+  hi 'StatusLine' { guifg=c.gray1, guibg=c.gray4 }
+  hi 'StatusLineNC' { guifg=c.gray1, guibg=c.gray1 }
   hi 'TabLine' { guifg=c.gray4, guibg=c.gray2, gui='none' }
   hi 'TabLineFill' { guifg=c.gray3, guibg=c.black, gui='none' }
   hi 'TabLineSel' { guifg=c.black, guibg=c.accent, gui='bold' }

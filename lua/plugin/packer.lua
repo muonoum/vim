@@ -1,5 +1,5 @@
 return require('packer').startup(
-  function(use)
+  function()
     use {
       'wbthomason/packer.nvim',
       opt = true,
@@ -35,9 +35,16 @@ return require('packer').startup(
       config = function() require('plugin.lspconfig') end,
     }
 
-    use { 'cocopon/iceberg.vim' }
+    use { 'cocopon/iceberg.vim',
+      opt = true,
+    }
+
+    use { 'lifepillar/vim-gruvbox8',
+      opt = true,
+    }
 
     use { 'gruvbox-community/gruvbox',
+      opt = true,
       config = function()
         vim.g.gruvbox_contrast_dark = 'hard'
         vim.g.gruvbox_contrast_light = 'hard'
@@ -73,5 +80,9 @@ return require('packer').startup(
 
     use { 'pearofducks/ansible-vim' }
     use { 'tommcdo/vim-lion' }
+
+    use { 'liuchengxu/vim-which-key',
+      opt = true,
+    }
   end
 )

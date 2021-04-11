@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# if test -d ~/.config/nvim; then
+#   echo "~/.config/nvim already exists"
+#   exit 1
+# fi
+
+mkdir -p ~/.config/nvim
+
+ln -svf ~/.vim/init.vim ~/.config/nvim
+ln -svf ~/.vim/lua ~/.config/nvim
+ln -svf ~/.vim/vim ~/.config/nvim
+ln -svf ~/.vim/after ~/.config/nvim

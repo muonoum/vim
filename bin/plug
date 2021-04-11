@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+plug() {
+  echo -n "$1: "
+  [[ $1 == *"://"* ]] && url=$1 || url=https://github.com/${1}.git
+  dir=$(echo $url | rev | cut -d/ -f1 | rev | sed 's,.git$,,')
+  [ -d $dir ] && git -C $dir pull || git clone --depth=1 $url $dir
+}
+
+if [ -n ${1:-""} ]; then
+  mkdir -p pack/plugins/start
+ (cd pack/plugins/start; plug $1)
+  exit 0
+fi
+
+mkdir -p pack/plugins/start; (
+  cd pack/plugins/start
+  test -f "$OLDPWD/plugs" && source "$OLDPWD/plugs"
+  test -f "$OLDPWD/plugs-local" && source "$OLDPWD/plugs-local"
+)

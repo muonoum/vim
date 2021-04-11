@@ -1,0 +1,16 @@
+plug mhinz/vim-sayonara
+plug romainl/vim-cool
+plug roman/golden-ratio
+
+plug tpope/vim-commentary
+plug tpope/vim-fugitive
+plug tpope/vim-pathogen
+plug tpope/vim-surround
+plug tpope/vim-unimpaired
+plug tpope/vim-vinegar
+
+plug cocopon/iceberg.vim
+plug lifepillar/vim-gruvbox8
+
+plug junegunn/fzf
+plug junegunn/fzf.vim

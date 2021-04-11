@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+tar --exclude=.git -C$HOME -cvzf $HOME/dotvim.tar.gz .vim

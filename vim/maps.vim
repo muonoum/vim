@@ -15,5 +15,7 @@ inoremap <cr> <esc>`^
 xnoremap p pgvy
 xnoremap P Pgvy
 
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-v><Esc> <Esc>
+if exists(':tnoremap')
+  tnoremap <Esc> <C-\><C-n>
+  " tnoremap <C-v><Esc> <Esc>
+endif
