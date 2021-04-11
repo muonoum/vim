@@ -43,7 +43,6 @@ nnoremap <leader>bW :%bwipeout!<cr>
 nnoremap <leader>bO :OtherBuffersDo bwipeout!<cr>
 nnoremap <leader>bH :HiddenBuffersDo bwipeout!<cr>
 
-" Vurdere disse. Kanskje bruke standard C-w maps
 nmap <silent> <leader>ww <Plug>(golden_ratio_resize)
 nnoremap <leader>wf <C-w><Bar><C-w>_
 nnoremap <leader>w= <C-w>=
