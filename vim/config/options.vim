@@ -2,7 +2,7 @@ let &showbreak = '» '
 let @/ = ""
 let netrw_cursor = 0
 let vimsyn_embed =  'l'
-let &undodir = has('nvim') ? stdpath('data').'/undo' : '~/.vim/undo'
+let &undodir = has('nvim') ? stdpath('data') . '/undo' : expand('~') . '/.vim/undo'
 silent call system('mkdir -p ' . &undodir)
 
 set autoread
