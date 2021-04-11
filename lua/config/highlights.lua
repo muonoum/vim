@@ -16,16 +16,16 @@ local scheme_colors = {
   },
 }
 
-local function setup()
-  local palette = {}
+local function make_colors()
+  local colors = {}
   local scheme = scheme_colors[vim.g.colors_name] or {}
-  for k, v in pairs(default_colors) do palette[k] = v end
-  for k, v in pairs(scheme_colors) do palette[k] = v end
-  return palette
+  for k, v in pairs(default_colors) do colors[k] = v end
+  for k, v in pairs(scheme_colors) do colors[k] = v end
+  return colors
 end
 
 return function()
-  local c = setup()
+  local c = make_colors()
 
   hi 'FoldColumn' { guifg=c.gray3, guibg=c.gray1 }
   hi 'Folded' { guifg=c.gray3, guibg=c.gray1 }
