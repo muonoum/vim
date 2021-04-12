@@ -3,6 +3,7 @@ let mapleader = "\<space>"
 if has('nvim')
   nnoremap <leader>ff :Telescope find_files<cr>
   nnoremap <leader>fb :Telescope buffers<cr>
+  nnoremap <leader>fl :Telescope current_buffer_fuzzy_find<cr>
   nnoremap <leader>5 :lua require'junkbox.util'.source()<cr>
   nnoremap <leader>/ :Telescope live_grep<cr>
 
@@ -12,6 +13,7 @@ if has('nvim')
 else
   nnoremap <leader>ff :Files<cr>
   nnoremap <leader>fb :Buffers<cr>
+  nnoremap <leader>fl :Lines<cr>
   nnoremap <leader>5 :source %<cr>
   nnoremap <leader>/ :Grep<cr>
 
