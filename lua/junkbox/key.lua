@@ -25,6 +25,10 @@ M.mapfn = function(mode, key, func, opts)
   vim.api.nvim_set_keymap(mode, key, cmd, opts)
 end
 
+M.nmap = function(key, arg, opts)
+  M.map('n', key, arg, opts)
+end
+
 M.lmap = function(mode, key, arg, opts)
   M.map(mode, '<leader>' .. key, arg, opts)
 end
