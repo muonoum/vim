@@ -92,6 +92,8 @@ return require('packer').startup(
     use { 'lambdalisue/fern.vim' }
     use { 'lambdalisue/fern-hijack.vim' }
 
+    use { 'nelstrom/vim-visual-star-search' }
+
     use { 'liuchengxu/vim-which-key',
       opt = true,
     }

@@ -1,6 +1,8 @@
 plug mhinz/vim-sayonara
+plug nelstrom/vim-visual-star-search
 plug romainl/vim-cool
 plug roman/golden-ratio
+plug tommcdo/vim-lion
 
 plug tpope/vim-commentary
 plug tpope/vim-fugitive
@@ -14,3 +16,4 @@ plug lifepillar/vim-gruvbox8
 
 plug junegunn/fzf
 plug junegunn/fzf.vim
+plug lambdalisue/fern.vim
