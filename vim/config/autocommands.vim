@@ -5,6 +5,7 @@ augroup vimrc
   autocmd CursorHold * echo
   autocmd FileType * setlocal formatoptions-=cro
   autocmd FileType * setlocal nocursorline
+  autocmd InsertLeave * silent! set nopaste
 augroup END
 
 if exists('##TermOpen') && exists('##TermClose')
