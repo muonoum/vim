@@ -76,7 +76,11 @@ return require('packer').startup(
     }
 
     use { 'tpope/vim-commentary' }
-    use { 'tpope/vim-fugitive' }
+    use { 'tpope/vim-fugitive',
+      config = function()
+        vim.g.fugitive_legacy_commands = 0
+      end,
+    }
     use { 'tpope/vim-repeat' }
     use { 'tpope/vim-surround' }
     use { 'tpope/vim-unimpaired' }
