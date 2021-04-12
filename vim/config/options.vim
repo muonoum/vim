@@ -7,7 +7,7 @@ silent call system('mkdir -p ' . &undodir)
 
 set autoread
 set backspace=indent,eol,start
-set diffopt=internal,filler,closeoff,algorithm:patience,foldcolumn:0
+set diffopt+=foldcolumn:0
 set expandtab smarttab tabstop=4 softtabstop=2 shiftwidth=2
 set foldmethod=indent nofoldenable
 set formatoptions+=j
