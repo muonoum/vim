@@ -68,7 +68,11 @@ return require('packer').startup(
     use { 'romainl/vim-cool' }
 
     use { 'norcalli/nvim-colorizer.lua',
-      config = function() require'colorizer'.setup() end,
+      config = function() require('colorizer').setup() end,
+    }
+
+    use { 'voldikss/vim-floaterm',
+      config = function() require('plugin.floaterm') end,
     }
 
     use { 'tpope/vim-commentary' }

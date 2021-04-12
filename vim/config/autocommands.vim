@@ -10,7 +10,7 @@ augroup END
 if exists('##TermOpen') && exists('##TermClose')
   augroup terminal_events
     autocmd!
-    autocmd TermOpen term://* startinsert
-    autocmd TermClose term://* Sayonara
+    autocmd TermOpen term://* if &ft != 'floaterm' | startinsert | endif
+    autocmd TermClose term://* if &ft != 'floaterm' | Sayonara | endif
   augroup END
 endif
