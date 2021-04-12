@@ -89,6 +89,9 @@ return require('packer').startup(
     use { 'pearofducks/ansible-vim' }
     use { 'tommcdo/vim-lion' }
 
+    use { 'lambdalisue/fern.vim' }
+    use { 'lambdalisue/fern-hijack.vim' }
+
     use { 'liuchengxu/vim-which-key',
       opt = true,
     }

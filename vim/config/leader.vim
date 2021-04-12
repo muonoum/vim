@@ -20,6 +20,9 @@ else
   endif
 endif
 
+nnoremap <leader>x :Fern .<cr>
+nnoremap <leader>X :vnew<bar>Fern .<cr>
+
 nnoremap <leader>q :Sayonara<cr>
 nnoremap <leader>- :vsplit $PWD<cr>
 nnoremap <leader>cd :lcd %:p:h<cr>:pwd<cr>
