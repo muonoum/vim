@@ -7,8 +7,9 @@ silent call system('mkdir -p ' . &undodir)
 
 set autoread
 set backspace=indent,eol,start
+set clipboard^=unnamed,unnamedplus
 set diffopt+=foldcolumn:0
-set expandtab smarttab tabstop=4 softtabstop=2 shiftwidth=2
+set expandtab smarttab tabstop=4 softtabstop=2 shiftwidth=2 shiftround
 set foldmethod=indent nofoldenable
 set formatoptions+=j
 set hidden
