@@ -1,7 +1,14 @@
+" FIXME ødelegger paste
+func! s:cleanWhitespace()
+  let w:v = winsaveview()
+  keeppatterns silent! %s/\s\+$//e
+  keeppatterns silent! v/\_s*\S/d
+  call winrestview(w:v)
+endf
+
 augroup vimrc
   autocmd!
-  autocmd BufWritePre * %s/\s\+$//e
-  autocmd BufWritePre * let w:v = winsaveview() | silent! v/\_s*\S/d | call winrestview(w:v)
+  autocmd BufWritePre * call s:cleanWhitespace()
   autocmd CursorHold * echo
   autocmd FileType * setlocal formatoptions-=cro
   autocmd FileType * setlocal nocursorline
