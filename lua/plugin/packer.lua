@@ -35,21 +35,9 @@ return require('packer').startup(
       config = function() require('plugin.lspconfig') end,
     }
 
-    use { 'cocopon/iceberg.vim',
-      opt = true,
-    }
-
-    use { 'lifepillar/vim-gruvbox8',
-      opt = true,
-    }
-
-    use { 'gruvbox-community/gruvbox',
-      opt = true,
-      config = function()
-        vim.g.gruvbox_contrast_dark = 'hard'
-        vim.g.gruvbox_contrast_light = 'hard'
-      end,
-    }
+    use { 'cocopon/iceberg.vim', opt = true }
+    use { 'gruvbox-community/gruvbox', opt = true }
+    use { 'lifepillar/vim-gruvbox8', opt = true }
 
     use { 'nvim-telescope/telescope.nvim',
       requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
@@ -65,8 +53,6 @@ return require('packer').startup(
       config = function() require('plugin.smoothie') end,
     }
 
-    use { 'romainl/vim-cool' }
-
     use { 'norcalli/nvim-colorizer.lua',
       config = function() require('colorizer').setup() end,
     }
@@ -76,26 +62,18 @@ return require('packer').startup(
     }
 
     use { 'tpope/vim-commentary' }
-    use { 'tpope/vim-fugitive',
-      config = function()
-        vim.g.fugitive_legacy_commands = 0
-      end,
-    }
+    use { 'tpope/vim-fugitive' }
     use { 'tpope/vim-repeat' }
     use { 'tpope/vim-surround' }
     use { 'tpope/vim-unimpaired' }
     use { 'tpope/vim-vinegar' }
-
-    use { 'pearofducks/ansible-vim' }
+    use { 'tpope/vim-scriptease' }
     use { 'tommcdo/vim-lion' }
+    use { 'romainl/vim-cool' }
 
     use { 'lambdalisue/fern.vim' }
     use { 'lambdalisue/fern-hijack.vim' }
 
-    use { 'nelstrom/vim-visual-star-search' }
-
-    use { 'liuchengxu/vim-which-key',
-      opt = true,
-    }
+    use { 'pearofducks/ansible-vim' }
   end
 )

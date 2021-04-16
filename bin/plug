@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+pack=pack/plugs
+
 plug() {
   echo -n "$1: "
   [[ $1 == *"://"* ]] && url=$1 || url=https://github.com/${1}.git
@@ -9,13 +11,13 @@ plug() {
 }
 
 if [ -n ${1:-""} ]; then
-  mkdir -p pack/plugins/start
- (cd pack/plugins/start; plug $1)
+  mkdir -p $pack/start
+ (cd $pack/start; plug $1)
   exit 0
 fi
 
-mkdir -p pack/plugins/start; (
-  cd pack/plugins/start
+mkdir -p $pack/start; (
+  cd $pack/start
   test -f "$OLDPWD/plugs" && source "$OLDPWD/plugs"
   test -f "$OLDPWD/plugs-local" && source "$OLDPWD/plugs-local"
 )
