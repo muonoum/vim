@@ -1,4 +1,4 @@
-" TODO: Breaks in vim
+if !has('nvim') | finish | endif
 
 let g:fern#renderer#default#leaf_symbol = ''
 let g:fern#renderer#default#collapsed_symbol = ''

@@ -1,8 +1,10 @@
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = 'menuone,noselect'
 
-require"compe".setup {
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
   min_length = 3;
-  preselect = "disable";
+  preselect = 'disable';
   documentation = false;
   source = {
     nvim_lsp = true;

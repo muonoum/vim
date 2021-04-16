@@ -21,7 +21,6 @@ let g:ctrlp_status_func = {
 \}
 
 func! CtrlPStatusline1(focus, byfname, regex, prev, item, next, marked)
-  " a:focus,
   let components = [
   \ a:byfname,
   \ a:regex ? 'regex' : '',
@@ -31,6 +30,7 @@ func! CtrlPStatusline1(focus, byfname, regex, prev, item, next, marked)
   \ a:marked,
   \ '%=%< '.getcwd(),
   \]
+
   let filtered = filter(components, '!empty(v:val)')
   return ' '.join(filtered, '  ').' '
 endf
@@ -49,10 +49,7 @@ command! CtrlPGrep call ctrlp#init(CtrlPGrepId())
 
 func! CtrlPGrepMatch(search)
   let str = a:search['str'] " TODO unngå at ctrlp lager pattern av input
-
-  if empty(str)
-    return []
-  endif
+  if empty(str) | return [] | endif
 
   let cmd = 'rg --vimgrep '.str.''
   let r = system(cmd)
@@ -60,6 +57,25 @@ func! CtrlPGrepMatch(search)
 
   return matches
 endf
+
+let s:ctrlp_grep_var = {
+\ 'init': 'CtrlPGrepInit()',
+\ 'accept': 'CtrlPGrepAccept',
+\ 'lname': 'grep',
+\ 'sname': 'grep',
+\ 'matcher':  {
+\   'match': function('CtrlPGrepMatch'),
+\   'arg_type': 'dict',
+\ },
+\ 'type': 'path',
+\ 'sort': 0,
+\}
+
+if exists('g:ctrlp_ext_vars')
+  call add(g:ctrlp_ext_vars, s:ctrlp_grep_var)
+else
+  let g:ctrlp_ext_vars = [s:ctrlp_grep_var]
+endif
 
 func! CtrlPGrepId()
   return g:ctrlp_builtins + len(g:ctrlp_ext_vars)
@@ -72,16 +88,3 @@ endf
 function! CtrlPGrepAccept(mode, str)
   call ctrlp#exit()
 endfunction
-
-" call add(g:ctrlp_ext_vars, {
-" \ 'init': 'CtrlPGrepInit()',
-" \ 'accept': 'CtrlPGrepAccept',
-" \ 'lname': 'grep',
-" \ 'sname': 'grep',
-" \ 'matcher':  {
-" \   'match': function('CtrlPGrepMatch'),
-" \   'arg_type': 'dict',
-" \ },
-" \ 'type': 'path',
-" \ 'sort': 0,
-" \})

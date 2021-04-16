@@ -26,8 +26,8 @@ func! StatusLineActive()
   let b = StatusComponent('ActiveStatusLine2', '%.30{FugitiveHead()}')
   let c = StatusComponent('ActiveStatusLine3', ' ')
 
-  let x = StatusComponent('ActiveStatusLine3', '%{&enc}')
-  let y = StatusComponent('ActiveStatusLine2', '%{&filetype}')
+  let x = StatusComponent('ActiveStatusLine3', '%{&enc}') " FIXME: Tar opp plass hvis tomme (pga joins)
+  let y = StatusComponent('ActiveStatusLine2', '%{&filetype}') " ^^^
   let z = StatusComponent('ActiveStatusLine1', '%4P %3l:%-2c', 1)
 
   return StatusLine('StatusLineFill', [a, b, c], [x, y, z], 2)
@@ -47,8 +47,8 @@ endf
 
 augroup SetStatusline
   autocmd!
-  autocmd WinEnter * :setlocal statusline=%!StatusLineActive()
-  autocmd WinLeave * :setlocal statusline=%!StatusLineInactive()
+  autocmd WinEnter * setlocal statusline=%!StatusLineActive()
+  autocmd WinLeave * setlocal statusline=%!StatusLineInactive()
 augroup END
 
 set statusline=%!StatusLineActive()

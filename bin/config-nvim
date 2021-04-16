@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+
 mkdir -p ~/.config/nvim
+
 ln -svf ~/.vim/init.vim ~/.config/nvim
 ln -svf ~/.vim/lua ~/.config/nvim
 ln -svf ~/.vim/vim ~/.config/nvim
