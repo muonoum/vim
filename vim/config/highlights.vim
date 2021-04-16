@@ -9,7 +9,7 @@ let s:default = {
 
 let s:scheme = {
 \ 'iceberg': {
-\   'accent': '#869a9e',
+\   'accent': '#33374c',
 \   'gray1':  '#0c0f0f',
 \ },
 \ 'gruvbox': {
@@ -47,6 +47,11 @@ func! Highlights()
   let c = s:make_colors()
 
   call s:highlight('Normal', {
+  \ 'ctermbg': 'NONE',
+  \ 'guibg': 'NONE',
+  \})
+
+  call s:highlight('Todo', {
   \ 'ctermbg': 'NONE',
   \ 'guibg': 'NONE',
   \})

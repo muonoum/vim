@@ -11,7 +11,7 @@ local default_colors = {
 
 local scheme_colors = {
   iceberg = {
-    accent = '#869a9e',
+    accent = '#788098',
     gray1 = '#0c0f0f',
   },
 }
@@ -30,6 +30,7 @@ return function()
   hi 'FoldColumn' { guifg=c.gray3, guibg=c.gray1 }
   hi 'Folded' { guifg=c.gray3, guibg=c.gray1 }
   hi 'NonText' { guifg=c.gray2 }
+  hi 'Todo' { guifg='#b16286', guibg='none', gui='bold' }
   hi 'Normal' { guibg='none' }
   hi 'PMenu' { guibg=c.gray2 }
   hi 'PMenuSel' { guifg=c.black, guibg=c.accent, gui='bold' }
