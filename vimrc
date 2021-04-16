@@ -2,7 +2,7 @@ set nocompatible
 filetype plugin indent on
 syntax on
 
-runtime pack/plugins/start/vim-pathogen/autoload/pathogen.vim
+runtime pack/plugs/start/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 func! Chomp(str)

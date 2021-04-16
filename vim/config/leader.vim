@@ -22,14 +22,13 @@ else
   endif
 endif
 
-nnoremap <leader>x :Fern .<cr>
-nnoremap <leader>X :vnew<bar>Fern .<cr>
-
-nnoremap <leader>q :Sayonara<cr>
+nnoremap <silent> <leader>q :Sayonara<cr>
+nnoremap <leader>~ :vsplit $HOME<cr>
 nnoremap <leader>- :vsplit $PWD<cr>
 nnoremap <leader>cd :lcd %:p:h<cr>:pwd<cr>
 
-nnoremap <leader>gg :vertical Git<cr>
+nnoremap <leader>ge :Gedit :<cr>
+nnoremap <leader>gv :vertical Git<cr>
 nnoremap <leader>gp :Git push<cr>
 
 nnoremap <leader>bb :buffers<cr>:buffer<space>

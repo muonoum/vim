@@ -28,12 +28,13 @@ func! s:init_fern() abort
   \   "\<Plug>(fern-action-enter)",
   \ )
 
+  nmap <buffer> ^     /^
   nmap <buffer> <CR>  <Plug>(fern-my-open-or-enter)
   nmap <buffer> -     <Plug>(fern-action-leave)
   nmap <buffer> <c-l> <Plug>(fern-action-reload)
   nmap <buffer> e     <Plug>(fern-action-open:split)
   nmap <buffer> h     <Plug>(fern-action-hidden:toggle)
-  nmap <buffer> n     <Plug>(fern-action-new-path)
+  nmap <buffer> <c-n> <Plug>(fern-action-new-path)
   nmap <buffer> r     <Plug>(fern-action-rename)
   nmap <buffer> s     <Plug>(fern-action-open:select)
   nmap <buffer> v     <Plug>(fern-action-open:vsplit)

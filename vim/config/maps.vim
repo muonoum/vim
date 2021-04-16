@@ -3,6 +3,16 @@ if exists(':tnoremap')
   " tnoremap <C-v><Esc> <Esc>
 endif
 
+function! s:vsearch(cmd)
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, a:cmd.'\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+xnoremap * :<C-u>call <SID>vsearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>vsearch('?')<CR>?<C-R>=@/<CR><CR>
+
 command! W w
 command! Q q
 command! WQ wq
