@@ -144,10 +144,15 @@ func! s:renderContent(prefix, keys, content)
 
   redraw
   if has('nvim')
-    echohl FloatBorder
-    let prompt = '> '.join(a:keys, '').'█'
-    let spacing = repeat(' ', maxItem - strdisplaywidth(prompt) - pad*2)
-    echo '│'.padding.prompt.spacing.padding.'│'
+    let prompt = '> '
+    let input = join(a:keys, '').'█'
+
+    let spacing = repeat(' ', maxItem - strdisplaywidth(prompt.input) - pad*2)
+
+    echohl FloatBorder | echon '│'.padding
+    echohl Number | echon prompt
+    echohl Normal | echon input
+    echohl FloatBorder | echon spacing.padding.'│'
   else
     echohl Number
     echo '> '.join(a:keys, '')
