@@ -10,6 +10,16 @@ func! MergeDicts(a, b) abort
   return new
 endf
 
+func! MaxLength(xs)
+  let l = 0
+  for x in a:xs
+    if len(x) > l
+      let l = len(x)
+    end
+  endfor
+  return l
+endf
+
 func! SequenceToDict(seq, v) abort
   if empty(a:seq) | return a:v | end
   let [head; tail] = a:seq

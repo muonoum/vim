@@ -6,10 +6,14 @@ vnoremap , :GuideMenuVisual '<Space>' <CR>
 command! -nargs=1 GuideMenu call GuideMenu('n', <args>)
 command! -nargs=1 -range GuideMenuVisual call GuideMenu('v', <args>)
 
-hi NormalFloat guibg=#111111
-
-let g:guide_menu#floating = 1
-let g:guide_menu#labels = {}
+let g:guideMenu#labels = {
+      \'f': '+find',
+      \'b': '+buffer',
+      \'p': '+plugin',
+      \'t': '+toggle',
+      \'g': '+git',
+      \'w': '+window',
+      \}
 
 func! GuideMenu(mode, prefix) abort
   let prefix = a:prefix ==# ' ' ? '<Space>' : a:prefix
@@ -21,15 +25,6 @@ func! GuideMenu(mode, prefix) abort
   end
 
   let window = s:openWindow()
-
-  augroup guideMenuStatus
-    autocmd!
-    if !g:guide_menu#floating
-      autocmd  FileType guide_menu set laststatus=0 noshowmode noruler
-            \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler " FIXME
-    end
-  augroup END
-
   let keys = []
 
   while v:true
@@ -43,8 +38,9 @@ func! GuideMenu(mode, prefix) abort
     end
 
     call s:renderContent(prefix, keys,
-          \map(items(current), {_, v -> s:renderItem(v[0], v[1])})
+          \map(items(current), {_, v -> s:renderItem(keys + [v[0]], v[1])})
           \)
+
     try
       let char = getchar()
     catch /^Vim:Interrupt$/
@@ -105,35 +101,65 @@ func s:newGuide(mode, prefix)
   return guide
 endf
 
-func! s:renderItem(k, v)
-  return printf('%s  %s', a:k,
-        \s:isMapping(a:v) ? a:v.rhs : printf('+group<%s>', a:k))
+func! s:renderItem(keys, v)
+  let k = a:keys[-1]
+  let keys = join(a:keys, '')
+
+  if exists('g:guideMenu#labels') && has_key(g:guideMenu#labels, keys)
+    let label = g:guideMenu#labels[keys]
+  elseif s:isMapping(a:v)
+    let label = a:v.rhs
+  else
+    let label = '+group'
+  end
+
+  return printf('%s %s', k, label)
+endf
+
+func! s:sortItems(a, b)
+  let a = split(a:a, ' ') | let b = split(a:b, ' ')
+  if a[1][0] == '+' && b[1][0] == '+' | return a[1] > b[1] ? 1 : -1
+  elseif a[1][0] == '+' | return -1
+  elseif b[1][0] == '+' | return 1
+  else | return a[0] > b[0] ? 1 : -1
+  end
 endf
 
 func! s:renderContent(prefix, keys, content)
-  let content = sort(a:content)
-  execute 'resize' len(a:content)
+  let pad = has('nvim') ? 1 : 0 " FIXME
+  let content = sort(a:content, 's:sortItems')
+  let content = map(content, {_, v -> repeat(' ', pad).v.repeat(' ', pad) })
+  execute 'vertical resize' MaxLength(content)
+  execute 'resize' len(content)
 
   setlocal modifiable
   silent 1,$delete _
-  call setline(1, a:content)
+  call setline(1, content)
   setlocal nomodifiable
 
   redraw
-  echohl Number
-  echo a:prefix.'-'.join(a:keys, '')
+  if has('nvim')
+    echohl FloatBorder
+    let prompt = '│'.repeat(' ', pad).'> '.join(a:keys, '').'█'
+    let prompt = prompt.repeat(' ', MaxLength(a:content)-len(prompt)).'     │'
+    echo prompt
+  else
+    echohl Number
+    echo '> '.join(a:keys, '')
+  end
   echohl None
 endf
 
 func s:openWindow()
   let window = {'previous': winnr(), 'saved': winsaveview(), 'restore': winrestcmd()}
 
-  if g:guide_menu#floating
+  if has('nvim')
     let ui = nvim_list_uis()[0]
     let opts = {
-          \ 'relative': 'editor', 'anchor': 'NW', 'style': 'minimal',
+          \ 'relative': 'editor', 'anchor': 'SW', 'style': 'minimal',
+          \ 'border': ['╭','─','╮','│','╯','─','╰','│'],
           \ 'width': ui.width, 'height': 1,
-          \ 'col': ui.width, 'row': ui.height,
+          \ 'col': 0, 'row': ui.height-2,
           \ }
     let buf = nvim_create_buf(0, 1)
     let win = nvim_open_win(buf, 1, opts)
@@ -145,6 +171,15 @@ func s:openWindow()
   setlocal filetype=guide_menu
   setlocal buftype=nofile bufhidden=wipe
   setlocal nobuflisted noswapfile
+  setlocal guicursor+=a:Cursor/lCursor
+
+  " FIXME
+  if has('nvim')
+    highlight Cursor blend=100
+  else
+    setlocal laststatus=0 noshowmode noruler
+  end
+
   return window
 endf
 
@@ -154,5 +189,13 @@ func s:closeWindow(window)
   execute a:window.previous.'wincmd w'
   execute a:window.restore
   call winrestview(a:window.saved)
+
+  " FIXME
+  if has('nvim')
+    highlight Cursor blend=0
+  else
+    setlocal laststatus=2 showmode ruler
+  end
+
   echon
 endf

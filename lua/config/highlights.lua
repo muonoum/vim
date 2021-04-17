@@ -27,6 +27,9 @@ end
 return function()
   local c = make_colors()
 
+  hi 'NormalFloat' { guibg=c.black }
+  hi 'FloatBorder' { guibg=c.black, guifg=c.gray3 }
+
   hi 'FoldColumn' { guifg=c.gray3, guibg=c.gray1 }
   hi 'Folded' { guifg=c.gray3, guibg=c.gray1 }
   hi 'NonText' { guifg=c.gray2 }
