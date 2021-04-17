@@ -1,5 +1,5 @@
-"nnoremap <Space> :GuideMenu '<Space>' <CR>
-"vnoremap <Space> :GuideMenuVisual '<Space>' <CR>
+nnoremap <Space> :GuideMenu '<Space>' <CR>
+vnoremap <Space> :GuideMenuVisual '<Space>' <CR>
 nnoremap , :GuideMenu '<Space>' <CR>
 vnoremap , :GuideMenuVisual '<Space>' <CR>
 
