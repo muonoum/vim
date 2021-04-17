@@ -69,7 +69,7 @@ func! s:parseMaps(mode, prefix) abort
   let maps = ""
   redir => maps | silent execute (a:mode.'map'.a:prefix) | redir END
   let parsed = map(split(maps, '\n'), {_, line -> s:parseMap(line)})
-  return filter(parsed, {_, map -> map != {}})
+  return filter(parsed, {_, map -> map != {} && map.lhs != a:prefix})
 endf
 
 func! s:isMapping(v)
