@@ -13,7 +13,12 @@ let g:guide_menu#labels = {}
 func! GuideMenu(mode, prefix) abort
   let prefix = a:prefix ==# ' ' ? '<Space>' : a:prefix
   let guide = s:newGuide(a:mode, prefix)
-  let keys = []
+
+  if empty(guide)
+    echo 'No mappings found for "'.prefix.'"'
+    return
+  end
+
   let window = s:openWindow()
 
   augroup guideMenuStatus
@@ -23,6 +28,8 @@ func! GuideMenu(mode, prefix) abort
             \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler " FIXME
     end
   augroup END
+
+  let keys = []
 
   while v:true
     let current = s:lookupGuide(guide, keys)
