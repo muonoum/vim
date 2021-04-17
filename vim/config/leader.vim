@@ -6,6 +6,12 @@ if has('nvim')
   nnoremap <leader>fl :Telescope current_buffer_fuzzy_find<cr>
   nnoremap <leader>5 :lua require'junkbox.util'.source()<cr>
   nnoremap <leader>/ :Telescope live_grep<cr>
+  nnoremap <leader>gb :Telescope git_branches<cr>
+
+  nnoremap <leader>ps :PackerSync<cr>
+  nnoremap <leader>pi :PackerInstall<cr>
+  nnoremap <leader>pu :PackerUpdate<cr>
+  nnoremap <leader>pc :PackerClean<cr>
 
   if exists(':terminal')
     nnoremap <leader>T :vsplit<bar>:terminal<cr>
