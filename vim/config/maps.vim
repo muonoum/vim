@@ -18,6 +18,8 @@ command! Q q
 command! WQ wq
 command! Wq wq
 
+nnoremap Y y$
+
 noremap j gj
 noremap k gk
 noremap <Down> gj
