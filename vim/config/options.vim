@@ -25,5 +25,5 @@ set shortmess=filnxtToOIc
 set splitright splitbelow
 set textwidth=0 wrapmargin=0
 set undofile
-set updatetime=2500 timeoutlen=1000
+set updatetime=2500 timeoutlen=500
 set winwidth=5 winminwidth=5 winheight=1 winminheight=1
