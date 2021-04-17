@@ -1,12 +1,12 @@
-nnoremap <Space> :GuideMenu '<Space>' <CR>
-vnoremap <Space> :GuideMenuVisual '<Space>' <CR>
-nnoremap , :GuideMenu '<Space>' <CR>
-vnoremap , :GuideMenuVisual '<Space>' <CR>
+nnoremap <Space> :PrefixGuide '<Space>' <CR>
+vnoremap <Space> :PrefixGuideVisual '<Space>' <CR>
+nnoremap , :PrefixGuide '<Space>' <CR>
+vnoremap , :PrefixGuideVisual '<Space>' <CR>
 
-command! -nargs=1 GuideMenu call GuideMenu('n', <args>)
-command! -nargs=1 -range GuideMenuVisual call GuideMenu('v', <args>)
+command! -nargs=1 PrefixGuide call PrefixGuide('n', <args>)
+command! -nargs=1 -range PrefixGuideVisual call PrefixGuide('v', <args>)
 
-let g:guideMenu#labels = {
+let g:prefixGuide#labels = {
       \'f': '+find',
       \'b': '+buffer',
       \'p': '+plugin',
@@ -15,7 +15,7 @@ let g:guideMenu#labels = {
       \'w': '+window',
       \}
 
-func! GuideMenu(mode, prefix) abort
+func! PrefixGuide(mode, prefix) abort
   let prefix = a:prefix ==# ' ' ? '<Space>' : a:prefix
   let guide = s:newGuide(a:mode, prefix)
 
@@ -106,8 +106,8 @@ func! s:renderItem(keys, value)
   let lastKey = a:keys[-1]
   let keys = join(a:keys, '')
 
-  if exists('g:guideMenu#labels') && has_key(g:guideMenu#labels, keys)
-    let label = g:guideMenu#labels[keys]
+  if exists('g:prefixGuide#labels') && has_key(g:prefixGuide#labels, keys)
+    let label = g:prefixGuide#labels[keys]
   elseif s:isMapping(a:value)
     let label = a:value.rhs
   else
@@ -127,11 +127,15 @@ func! s:sortItems(a, b)
 endf
 
 func! s:renderContent(prefix, keys, content)
-  let pad = has('nvim') ? 1 : 0 " FIXME
+  let pad = has('nvim') ? 2 : 0
+  let padding = repeat(' ', pad)
+
   let content = sort(a:content, 's:sortItems')
-  let content = map(content, {_, v -> repeat(' ', pad).v.repeat(' ', pad) })
-  execute 'vertical resize' MaxLength(content)
+  let content = map(content, {_, v -> padding.v.padding })
   execute 'resize' len(content)
+
+  let maxItem = MaxLength(content)
+  execute 'vertical resize' maxItem
 
   setlocal modifiable
   silent 1,$delete _
@@ -141,9 +145,9 @@ func! s:renderContent(prefix, keys, content)
   redraw
   if has('nvim')
     echohl FloatBorder
-    let prompt = '│'.repeat(' ', pad).'> '.join(a:keys, '').'█'
-    let prompt = prompt.repeat(' ', MaxLength(a:content)-len(prompt)).'     │'
-    echo prompt
+    let prompt = '> '.join(a:keys, '').'█'
+    let spacing = repeat(' ', maxItem - strdisplaywidth(prompt) - pad*2)
+    echo '│'.padding.prompt.spacing.padding.'│'
   else
     echohl Number
     echo '> '.join(a:keys, '')
@@ -169,12 +173,11 @@ func s:openWindow()
   end
 
   let window.nr = winnr()
-  setlocal filetype=guide_menu
+  setlocal filetype=prefix_guide
   setlocal buftype=nofile bufhidden=wipe
   setlocal nobuflisted noswapfile
   setlocal guicursor+=a:Cursor/lCursor
 
-  " FIXME
   if has('nvim')
     highlight Cursor blend=100
   else
@@ -191,7 +194,6 @@ func s:closeWindow(window)
   execute a:window.restore
   call winrestview(a:window.saved)
 
-  " FIXME
   if has('nvim')
     highlight Cursor blend=0
   else
