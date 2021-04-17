@@ -101,19 +101,19 @@ func s:newGuide(mode, prefix)
   return guide
 endf
 
-func! s:renderItem(keys, v)
-  let k = a:keys[-1]
+func! s:renderItem(keys, value)
+  let lastKey = a:keys[-1]
   let keys = join(a:keys, '')
 
   if exists('g:guideMenu#labels') && has_key(g:guideMenu#labels, keys)
     let label = g:guideMenu#labels[keys]
-  elseif s:isMapping(a:v)
-    let label = a:v.rhs
+  elseif s:isMapping(a:value)
+    let label = a:value.rhs
   else
     let label = '+group'
   end
 
-  return printf('%s %s', k, label)
+  return printf('%s %s', lastKey, label)
 endf
 
 func! s:sortItems(a, b)
