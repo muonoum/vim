@@ -1,3 +1,4 @@
+" TODO <Space>
 nnoremap , :GuideMenu '<Space>' <CR>
 vnoremap , :GuideMenuVisual '<Space>' <CR>
 
@@ -7,6 +8,7 @@ command! -nargs=1 -range GuideMenuVisual call GuideMenu('v', <args>)
 hi NormalFloat guibg=#111111
 
 let g:guide_menu#floating = 1
+let g:guide_menu#labels = {}
 
 func! GuideMenu(mode, prefix) abort
   let prefix = a:prefix ==# ' ' ? '<Space>' : a:prefix
