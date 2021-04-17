@@ -1,20 +1,26 @@
-command! -nargs=1 GuideMenu call GuideMenu('n', <args>)
-command! -nargs=1 -range GuideMenuVisual call GuideMenu('v', <args>)
-
 nnoremap , :GuideMenu '<Space>' <CR>
 vnoremap , :GuideMenuVisual '<Space>' <CR>
 
-augroup guideMenuStatus
-  autocmd!
-  autocmd  FileType guide_menu set laststatus=0 noshowmode noruler
-        \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-augroup END
+command! -nargs=1 GuideMenu call GuideMenu('n', <args>)
+command! -nargs=1 -range GuideMenuVisual call GuideMenu('v', <args>)
+
+hi NormalFloat guibg=#111111
+
+let g:guide_menu#floating = 1
 
 func! GuideMenu(mode, prefix) abort
   let prefix = a:prefix ==# ' ' ? '<Space>' : a:prefix
   let guide = s:newGuide(a:mode, prefix)
-  let window = s:openWindow()
   let keys = []
+  let window = s:openWindow()
+
+  augroup guideMenuStatus
+    autocmd!
+    if !g:guide_menu#floating
+      autocmd  FileType guide_menu set laststatus=0 noshowmode noruler
+            \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+    end
+  augroup END
 
   while v:true
     let current = s:lookupGuide(guide, keys)
@@ -111,7 +117,23 @@ endf
 
 func s:openWindow()
   let window = {'previous': winnr(), 'saved': winsaveview(), 'restore': winrestcmd()}
-  execute 'keepjumps' 'botright' '1new'
+  if g:guide_menu#floating
+    let buf = nvim_create_buf(v:false, v:true)
+    let ui = nvim_list_uis()[0]
+    let opts = {
+          \ 'relative': 'editor',
+          \ 'width': ui.width,
+          \ 'height': 1,
+          \ 'col': ui.width,
+          \ 'row': ui.height,
+          \ 'anchor': 'NW',
+          \ 'style': 'minimal',
+          \ }
+    let win = nvim_open_win(buf, 1, opts)
+  else
+    execute 'keepjumps' 'botright' '1new'
+  end
+
   let window.nr = winnr()
   setlocal filetype=guide_menu
   setlocal buftype=nofile bufhidden=wipe
