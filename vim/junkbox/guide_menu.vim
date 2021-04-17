@@ -20,7 +20,7 @@ func! GuideMenu(mode, prefix) abort
     autocmd!
     if !g:guide_menu#floating
       autocmd  FileType guide_menu set laststatus=0 noshowmode noruler
-            \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+            \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler " FIXME
     end
   augroup END
 
@@ -76,6 +76,16 @@ func! s:isMapping(v)
   return type(a:v) == type({}) && has_key(a:v, 'noremap')
 endf
 
+func s:lookupGuide(guide, keys)
+  let guide = a:guide
+  for arg in a:keys
+    if type(guide) != type({}) | return guide | end
+    if !has_key(guide, arg) | return guide | end
+    let guide = guide[arg]
+  endfor
+  return guide
+endf
+
 func s:newGuide(mode, prefix)
   let guide = {}
   for map in s:parseMaps(a:mode, a:prefix)
@@ -90,16 +100,6 @@ endf
 func! s:renderItem(k, v)
   return printf('%s  %s', a:k,
         \s:isMapping(a:v) ? a:v.rhs : printf('+group<%s>', a:k))
-endf
-
-func s:lookupGuide(guide, keys)
-  let guide = a:guide
-  for arg in a:keys
-    if type(guide) != type({}) | return guide | end
-    if !has_key(guide, arg) | return guide | end
-    let guide = guide[arg]
-  endfor
-  return guide
 endf
 
 func! s:renderContent(prefix, keys, content)
@@ -119,18 +119,15 @@ endf
 
 func s:openWindow()
   let window = {'previous': winnr(), 'saved': winsaveview(), 'restore': winrestcmd()}
+
   if g:guide_menu#floating
-    let buf = nvim_create_buf(v:false, v:true)
     let ui = nvim_list_uis()[0]
     let opts = {
-          \ 'relative': 'editor',
-          \ 'width': ui.width,
-          \ 'height': 1,
-          \ 'col': ui.width,
-          \ 'row': ui.height,
-          \ 'anchor': 'NW',
-          \ 'style': 'minimal',
+          \ 'relative': 'editor', 'anchor': 'NW', 'style': 'minimal',
+          \ 'width': ui.width, 'height': 1,
+          \ 'col': ui.width, 'row': ui.height,
           \ }
+    let buf = nvim_create_buf(0, 1)
     let win = nvim_open_win(buf, 1, opts)
   else
     execute 'keepjumps' 'botright' '1new'
