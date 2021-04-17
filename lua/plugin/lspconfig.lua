@@ -10,7 +10,4 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 lspconfig.elmls.setup{}
 lspconfig.gopls.setup{}
-lspconfig.elixirls.setup{
-  -- TODO cmd + dialyzerEnabled = false
-  cmd = ''
-}
+lspconfig.elixirls.setup{}
