@@ -13,9 +13,9 @@ if has('nvim')
   nnoremap <leader>pu :PackerUpdate<cr>
   nnoremap <leader>pc :PackerClean<cr>
 
-  if exists(':terminal')
-    nnoremap <leader>T :vsplit<bar>:terminal<cr>
-  endif
+  " if exists(':terminal')
+  "   nnoremap <leader>T :vsplit<bar>:terminal<cr>
+  " endif
 else
   nnoremap <leader>ff :Files<cr>
   nnoremap <leader>fb :Buffers<cr>
@@ -23,15 +23,15 @@ else
   nnoremap <leader>5 :source %<cr>
   nnoremap <leader>/ :Grep<cr>
 
-  if exists(':terminal')
-    nnoremap <leader>T :vertical terminal<cr>
-  endif
+  " if exists(':terminal')
+  "   nnoremap <leader>T :vertical terminal<cr>
+  " endif
 endif
 
 nnoremap <silent> <leader>q :Sayonara<cr>
 nnoremap <leader>~ :vsplit $HOME<cr>
 nnoremap <leader>- :vsplit $PWD<cr>
-nnoremap <leader>cd :lcd %:p:h<cr>:pwd<cr>
+" nnoremap <leader>cd :lcd %:p:h<cr>:pwd<cr>
 
 nnoremap <leader>ge :Gedit :<cr>
 nnoremap <leader>gv :vertical Git<cr>
@@ -49,7 +49,6 @@ nnoremap <leader>bH :HiddenBuffersDo bwipeout!<cr>
 
 nmap     <leader>wg <Plug>(golden_ratio_resize)
 nnoremap <leader>wf <C-w><Bar><C-w>_
-nnoremap <leader>wc :close<cr>
 
 nnoremap <leader>tw :set wrap!<cr>
 nnoremap <leader>tg :GoldenRatioToggle<cr>

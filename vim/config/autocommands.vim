@@ -10,7 +10,7 @@ augroup vimrc
   autocmd!
   autocmd BufWritePre * call s:cleanWhitespace()
   autocmd CursorHold * echo
-  autocmd FileType * setlocal formatoptions-=cro
+  autocmd FileType * setlocal formatoptions-=cro " FIXME funker ikke
   autocmd FileType * setlocal nocursorline
   autocmd InsertLeave * silent! set nopaste
 augroup END

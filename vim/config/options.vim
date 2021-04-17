@@ -5,6 +5,8 @@ let vimsyn_embed =  'l'
 let &undodir = has('nvim') ? stdpath('data') . '/undo' : expand('~') . '/.vim/undo'
 silent call system('mkdir -p ' . &undodir)
 
+" set inccommand=nosplit
+
 set autoread
 set backspace=indent,eol,start
 set clipboard^=unnamed,unnamedplus
