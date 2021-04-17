@@ -28,7 +28,8 @@ func! GuideMenu(mode, prefix) abort
   let keys = []
 
   while v:true
-    let current = s:lookupGuide(guide, keys)
+    let [current, ok] = s:lookupGuide(guide, keys)
+    if !ok | call remove(keys, -1) | end
 
     if s:isMapping(current)
       call s:closeWindow(window)
@@ -83,11 +84,11 @@ endf
 func s:lookupGuide(guide, keys)
   let guide = a:guide
   for arg in a:keys
-    if type(guide) != type({}) | return guide | end
-    if !has_key(guide, arg) | return guide | end
+    if type(guide) != type({}) | return [guide, 1] | end
+    if !has_key(guide, arg) | return [guide, 0] | end
     let guide = guide[arg]
   endfor
-  return guide
+  return [guide, 1]
 endf
 
 func s:newGuide(mode, prefix)
