@@ -30,8 +30,13 @@ func! PrefixGuide(mode, prefix) abort
   let keys = []
 
   while v:true
-    let [current, ok] = s:lookupGuide(guide, keys)
-    if !ok | call remove(keys, -1) | end
+    let [current, found] = s:lookupGuide(guide, keys)
+
+    if !found
+      if len(keys) == 0 | return
+      else | call remove(keys, -1) | continue
+      end
+    end
 
     if s:isMapping(current)
       call s:closeWindow(window)
