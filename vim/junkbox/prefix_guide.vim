@@ -6,6 +6,8 @@ vnoremap , :PrefixGuideVisual '<Space>' <CR>
 command! -nargs=1 PrefixGuide call PrefixGuide('n', <args>)
 command! -nargs=1 -range PrefixGuideVisual call PrefixGuide('v', <args>)
 
+let s:floating = has('nvim')
+
 let g:prefixGuide#labels = {
       \'f': '+find',
       \'b': '+buffer',
@@ -23,11 +25,6 @@ func! PrefixGuide(mode, prefix) abort
     echo 'No mappings found for "'.prefix.'"'
     return
   end
-
-  " TODO Lagre og gjenopprett settings vi endrer på:
-  " highlight Cursor blend=100 / Cursor blend=0
-  " setlocal laststatus=0 noshowmode noruler / laststatus=2 showmode ruler
-  " set guicursor+=a:Cursor/lCursor
 
   let window = s:openWindow()
   let keys = []
@@ -169,7 +166,7 @@ func! s:sortItems(a, b)
 endf
 
 func! s:renderContent(prefix, keys, content)
-  let pad = has('nvim') ? 2 : 0
+  let pad = s:floating ? 2 : 0
   let padding = repeat(' ', pad)
 
   let content = sort(a:content, 's:sortItems')
@@ -185,10 +182,11 @@ func! s:renderContent(prefix, keys, content)
   setlocal nomodifiable
 
   redraw
-  if has('nvim')
-    let prompt = '> '
-    let input = join(a:keys, '').'█'
+  let prompt = '> '
+  let keys = join(a:keys, '')
 
+  if s:floating
+    let input = keys.'█'
     let spacing = repeat(' ', maxItem - strdisplaywidth(prompt.input) - pad*2)
 
     echohl FloatBorder | echon '│'.padding
@@ -196,16 +194,17 @@ func! s:renderContent(prefix, keys, content)
     echohl Normal | echon input
     echohl FloatBorder | echon spacing.padding.'│'
   else
-    echohl Number
-    echo '> '.join(a:keys, '')
+    echohl Number | echon prompt
+    echohl Normal | echon keys
   end
+
   echohl None
 endf
 
 func s:openWindow()
   let window = {'previous': winnr(), 'saved': winsaveview(), 'restore': winrestcmd()}
 
-  if has('nvim')
+  if s:floating
     let ui = nvim_list_uis()[0]
     let opts = {
           \ 'relative': 'editor', 'anchor': 'SW', 'style': 'minimal',
@@ -223,11 +222,13 @@ func s:openWindow()
   setlocal filetype=prefix_guide
   setlocal buftype=nofile bufhidden=wipe
   setlocal nobuflisted noswapfile
-  setlocal guicursor+=a:Cursor/lCursor
 
-  if has('nvim')
+  if s:floating
+    " FIXME Save/restore
+    setlocal guicursor+=a:Cursor/lCursor
     highlight Cursor blend=100
   else
+    " FIXME Save/restore
     setlocal laststatus=0 noshowmode noruler
   end
 
@@ -241,9 +242,11 @@ func s:closeWindow(window)
   execute a:window.restore
   call winrestview(a:window.saved)
 
-  if has('nvim')
+  if s:floating
+    " FIXME Save/restore
     highlight Cursor blend=0
   else
+    " FIXME Save/restore
     setlocal laststatus=2 showmode ruler
   end
 endf
