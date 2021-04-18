@@ -8,23 +8,12 @@ command! -nargs=1 -range PrefixGuideVisual call PrefixGuide('v', <args>)
 
 let s:floating = has('nvim')
 
-let g:prefixGuide#labels = {
-      \'f': '+find',
-      \'b': '+buffer',
-      \'p': '+plugin',
-      \'t': '+toggle',
-      \'g': '+git',
-      \'w': '+window',
-      \}
+let g:prefixGuide#labels = get(g:, 'prefixGuide#labels', {})
 
 func! PrefixGuide(mode, prefix) abort
   let prefix = a:prefix ==# ' ' ? '<Space>' : a:prefix
   let guide = s:newGuide(a:mode, prefix)
-
-  if empty(guide)
-    echo 'No mappings found for "'.prefix.'"'
-    return
-  end
+  if empty(guide) | return | end
 
   let window = s:openWindow()
   let keys = []
@@ -87,7 +76,6 @@ func! s:parseMap(line)
 endf
 
 func! s:parseMaps(mode, prefix) abort
-  let maps = ''
   redir => maps | silent execute (a:mode.'map'.a:prefix) | redir END
   let parsed = map(split(maps, '\n'), {_, line -> s:parseMap(line)})
   return filter(parsed, {_, map -> map != {} && map.lhs != a:prefix})
@@ -100,11 +88,11 @@ endf
 func s:lookupGuide(guide, keys)
   let guide = a:guide
   for arg in a:keys
-    if type(guide) != type({}) | return [guide, 1] | end
-    if !has_key(guide, arg) | return [guide, 0] | end
+    if type(guide) != type({}) | return [guide, v:true] | end
+    if !has_key(guide, arg) | return [guide, v:false] | end
     let guide = guide[arg]
   endfor
-  return [guide, 1]
+  return [guide, v:true]
 endf
 
 func s:splitKeys(input)
@@ -149,7 +137,7 @@ func! s:renderItem(length, keys, value)
   if exists('g:prefixGuide#labels') && has_key(g:prefixGuide#labels, keys)
     let label = g:prefixGuide#labels[keys]
   elseif s:isMapping(a:value)
-    let label = a:value.rhs
+    let label = substitute(a:value.rhs, '<cmd>', ':', 'i')
   else
     let label = '+group'
   end
