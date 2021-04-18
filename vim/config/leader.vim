@@ -28,6 +28,9 @@ else
   " endif
 endif
 
+" nmap <leader>j %! jq .<cr>
+" vmap <leader>64 c<c-r>=system('base64 --decode', @")<cr><esc>
+
 nnoremap <silent> <leader>q :Sayonara<cr>
 nnoremap <leader>~ :vsplit $HOME<cr>
 nnoremap <leader>- :vsplit $PWD<cr>
