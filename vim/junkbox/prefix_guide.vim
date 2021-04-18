@@ -108,27 +108,27 @@ func s:lookupGuide(guide, keys)
 endf
 
 func s:splitKeys(input)
-  let r = []
+  let result = []
   let i = 0
-  let go = 1
+  let split = v:true
 
   while i < len(a:input)
-    if go
-      call add(r, a:input[i])
+    if split
+      call add(result, a:input[i])
     else
-      let r[-1] .= a:input[i]
+      let result[-1] .= a:input[i]
     end
 
     if a:input[i] ==? '<'
-      let go = 0
+      let split = v:false
     elseif a:input[i] ==? '>'
-      let go = 1
+      let split = v:true
     end
 
     let i += 1
   endwhile
 
-  return r
+  return result
 endf
 
 func s:newGuide(mode, prefix)
