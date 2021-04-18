@@ -1,6 +1,8 @@
 let mapleader = "\<space>"
 
 if has('nvim')
+  nnoremap <leader>dj :lua require('plenary').reload.reload_module('junkbox', true)<cr>
+
   nnoremap <leader>ff :Telescope find_files<cr>
   nnoremap <leader>fb :Telescope buffers<cr>
   nnoremap <leader>fl :Telescope current_buffer_fuzzy_find<cr>
@@ -8,10 +10,11 @@ if has('nvim')
   nnoremap <leader>/ :Telescope live_grep<cr>
   nnoremap <leader>gb :Telescope git_branches<cr>
 
-  nnoremap <leader>ps :PackerSync<cr>
+  nnoremap <leader>pc :PackerCompile<cr>
+  nnoremap <leader>px :PackerClean<cr>
   nnoremap <leader>pi :PackerInstall<cr>
+  nnoremap <leader>ps :PackerSync<cr>
   nnoremap <leader>pu :PackerUpdate<cr>
-  nnoremap <leader>pc :PackerClean<cr>
 
   " if exists(':terminal')
   "   nnoremap <leader>T :vsplit<bar>:terminal<cr>
