@@ -43,9 +43,9 @@ func! PrefixGuide(mode, prefix) abort
       return
     end
 
-    call s:renderContent(prefix, keys,
-          \map(items(current), {_, v -> s:renderItem(keys + [v[0]], v[1])})
-          \)
+    let length = MaxLength(map(items(current), {_, v -> v[0]}))
+    let items = map(items(current), {_, v -> s:renderItem(length, keys + [v[0]], v[1])})
+    call s:renderContent(prefix, keys, items)
 
     try
       let char = getchar()
@@ -63,6 +63,15 @@ func! PrefixGuide(mode, prefix) abort
       if len(keys)
         call remove(keys, -1)
       end
+    " TODO Vurdere denne seksjonen
+    elseif char == 32
+      call add(keys, '<Space>')
+    elseif char == 9
+      call add(keys, '<Tab>')
+    elseif char == 13
+      " call add(keys, '<CR>')
+      call s:closeWindow(window)
+      return
     else
       call add(keys, nr2char(char))
     end
@@ -96,18 +105,42 @@ func s:lookupGuide(guide, keys)
   return [guide, 1]
 endf
 
+func s:splitKeys(input)
+  let r = []
+  let i = 0
+  let go = 1
+
+  while i < len(a:input)
+    if go
+      call add(r, a:input[i])
+    else
+      let r[-1] .= a:input[i]
+    end
+
+    if a:input[i] ==? '<'
+      let go = 0
+    elseif a:input[i] ==? '>'
+      let go = 1
+    end
+
+    let i += 1
+  endwhile
+
+  return r
+endf
+
 func s:newGuide(mode, prefix)
   let guide = {}
   for map in s:parseMaps(a:mode, a:prefix)
       let map.lhs = substitute(map.lhs, a:prefix, '', '')
-      let map.keys = split(map.lhs, '\zs') " FIXME handle <space> etc
+      let map.keys = s:splitKeys(map.lhs)
       let guide = MergeDicts(guide,
             \SequenceToDict(reverse(copy(map.keys)), map))
   endfor
   return guide
 endf
 
-func! s:renderItem(keys, value)
+func! s:renderItem(length, keys, value)
   let lastKey = a:keys[-1]
   let keys = join(a:keys, '')
 
@@ -119,11 +152,15 @@ func! s:renderItem(keys, value)
     let label = '+group'
   end
 
+  if len(lastKey) < a:length
+    let lastKey .= repeat(' ', a:length-len(lastKey))
+  end
+
   return printf('%s %s', lastKey, label)
 endf
 
 func! s:sortItems(a, b)
-  let a = split(a:a, ' ') | let b = split(a:b, ' ')
+  let a = split(a:a, '\v\s+') | let b = split(a:b, '\v\s+')
   if a[1][0] == '+' && b[1][0] == '+' | return a[1] > b[1] ? 1 : -1
   elseif a[1][0] == '+' | return -1
   elseif b[1][0] == '+' | return 1
