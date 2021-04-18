@@ -136,8 +136,8 @@ func s:newGuide(mode, prefix)
   for map in s:parseMaps(a:mode, a:prefix)
       let map.lhs = substitute(map.lhs, a:prefix, '', '')
       let map.keys = s:splitKeys(map.lhs)
-      let guide = MergeDicts(guide,
-            \SequenceToDict(reverse(copy(map.keys)), map))
+      let guide = MergeDicts(guide, SequenceToDict(
+            \reverse(copy(map.keys)), map))
   endfor
   return guide
 endf
