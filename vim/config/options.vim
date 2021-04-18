@@ -20,7 +20,7 @@ set lazyredraw
 set list listchars=tab:⍿·,trail:· " eol:¬
 set nocursorline
 set nomodeline
-set noruler noshowcmd showmode laststatus=2
+set showcmd showmode noruler laststatus=2
 set nowrap linebreak breakindent
 set scrolloff=1 sidescrolloff=2
 set shortmess=filnxtToOIc
