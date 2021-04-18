@@ -24,6 +24,11 @@ func! PrefixGuide(mode, prefix) abort
     return
   end
 
+  " TODO Lagre og gjenopprett settings vi endrer på:
+  " highlight Cursor blend=100 / Cursor blend=0
+  " setlocal laststatus=0 noshowmode noruler / laststatus=2 showmode ruler
+  " set guicursor+=a:Cursor/lCursor
+
   let window = s:openWindow()
   let keys = []
 
@@ -71,7 +76,7 @@ func! s:parseMap(line)
 endf
 
 func! s:parseMaps(mode, prefix) abort
-  let maps = ""
+  let maps = ''
   redir => maps | silent execute (a:mode.'map'.a:prefix) | redir END
   let parsed = map(split(maps, '\n'), {_, line -> s:parseMap(line)})
   return filter(parsed, {_, map -> map != {} && map.lhs != a:prefix})
@@ -95,7 +100,7 @@ func s:newGuide(mode, prefix)
   let guide = {}
   for map in s:parseMaps(a:mode, a:prefix)
       let map.lhs = substitute(map.lhs, a:prefix, '', '')
-      let map.keys = split(map.lhs, '\zs')
+      let map.keys = split(map.lhs, '\zs') " FIXME handle <space> etc
       let guide = MergeDicts(guide,
             \SequenceToDict(reverse(copy(map.keys)), map))
   endfor
@@ -204,6 +209,4 @@ func s:closeWindow(window)
   else
     setlocal laststatus=2 showmode ruler
   end
-
-  echon
 endf
