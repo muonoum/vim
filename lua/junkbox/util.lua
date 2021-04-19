@@ -66,6 +66,11 @@ M.hi = function(group)
   local r = {'highlight', group}
 
   return function(props)
+    if props['link'] ~= nil then
+      vim.cmd('hi link '..group..' '..props['link'])
+      return
+    end
+
     for k, v in pairs(props) do
       table.insert(r, k..'='..v)
     end
