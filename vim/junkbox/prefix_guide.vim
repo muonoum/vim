@@ -137,7 +137,10 @@ func! s:renderItem(length, keys, value)
   if exists('g:prefixGuide#labels') && has_key(g:prefixGuide#labels, keys)
     let label = g:prefixGuide#labels[keys]
   elseif s:isMapping(a:value)
-    let label = substitute(a:value.rhs, '<cmd>', ':', 'i')
+    let label = substitute(a:value.rhs, '\c<cmd>', ':', 'g')
+    let label = substitute(label, '<cr>', '', 'i')
+    " let label = substitute(label, '<cr>', '¬', 'i')
+    " let label = a:value.rhs
   else
     let label = '+group'
   end
@@ -146,7 +149,7 @@ func! s:renderItem(length, keys, value)
     let lastKey .= repeat(' ', a:length-len(lastKey))
   end
 
-  return printf('%s %s', lastKey, label)
+  return printf('%s  %s', lastKey, label)
 endf
 
 func! s:sortItems(a, b)
@@ -175,7 +178,7 @@ func! s:renderContent(prefix, keys, content)
   setlocal nomodifiable
 
   redraw
-  let prompt = '> '
+  let prompt = '>> '
   let keys = join(a:keys, '')
 
   if s:floating
@@ -183,8 +186,8 @@ func! s:renderContent(prefix, keys, content)
     let spacing = repeat(' ', maxItem - strdisplaywidth(prompt.input) - pad*2)
 
     echohl FloatBorder | echon '│'.padding
-    echohl Number | echon prompt
-    echohl Normal | echon input
+    echohl prefixGuidePrompt | echon prompt
+    echohl prefixGuideInput | echon input
     echohl FloatBorder | echon spacing.padding.'│'
   else
     echohl Number | echon prompt
