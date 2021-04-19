@@ -13,6 +13,8 @@ augroup vimrc
   autocmd FileType * setlocal formatoptions-=cro " FIXME funker ikke
   autocmd FileType * setlocal nocursorline
   autocmd InsertLeave * silent! set nopaste
+  autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
 if exists('##TermOpen') && exists('##TermClose')
